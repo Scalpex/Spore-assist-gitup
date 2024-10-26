@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribution du rôle de Mutant</title>
+    <link rel="stylesheet" href="styles-at_mut.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="turn-counter">Nuit: <span id="turnDisplay"></span></div>
+            <h1>Attribution du rôle de <strong>Mutant</strong></h1>
+            <button id="exitButton" class="exit-button">
+                <img src="exit.png" alt="Exit" />
+            </button>
+        </div>
+        <p class="header-description">
+            Ce mutant est l'alpha. Il a le génome "hôte" et n'est pas soignable par les médecins. Un autre joueur parmi vous possède également ce génome à son insu. Une fois contaminé par le mutant, un hôte sera toujours insensible au soin.
+        </p>
+    </header>
+
+    <div class="button-container">
+        <!-- Les boutons des joueurs seront générés par JavaScript -->
+    </div>
+
+    <div class="action-buttons">
+        <button id="randomMutantButton" class="random-button">Sélectionner au hasard</button>
+        <button id="mutantParalyseButton" class="start-button">Le mutant va paralyser</button>
+    </div>
+
+    <script src="at_mut.js"></script>
+</body>
+</html>
