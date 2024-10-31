@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribution du rôle de Médecin</title>
+    <link rel="stylesheet" href="at_med.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="turn-counter">Nuit : <span id="turnDisplay"></span></div>
+            <h1>Attribution du rôle de <strong><span class="para-word">Médecin</span></strong> (x2)</h1>
+            <button id="exitButton" class="exit-button">
+                <img src="exit.png" alt="Exit" />
+            </button>
+        </div>
+        <p class="header-description">
+             Au premier tour, les deux médecins se reconnaissent, puis ferment les yeux s’ils ont été mutés ou paralysés.<br>
+             Les médecins sont vitaux pour la survie de l'équipage. S’ils venaient à être tous deux tués ou mutés, les mutants remporteraient la partie.</p>
+    </header>
+
+    <div class="button-container">
+        <!-- Les boutons des joueurs seront générés par JavaScript -->
+    </div>
+
+    <div class="action-buttons">
+        <button id="randomMedButton" class="random-button">Sélectionner au hasard</button>
+        <button id="medSoinButton" class="start-button">Les médecins vont soigner ou tuer</button>
+    </div>
+
+    <script src="at_med.js"></script>
+</body>
+</html>

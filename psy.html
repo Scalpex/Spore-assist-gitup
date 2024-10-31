@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les mutants paralysent</title>
-    <link rel="stylesheet" href="para.css">
+    <link rel="stylesheet" href="psy.css">
 </head>
 <body>
     <header>
@@ -15,19 +15,15 @@
                 <img src="exit.png" alt="Exit" />
             </button>
         </div>
-        <p class="header-description">
-            Un joueur paralysé ne peut pas agir pendant la nuit.<br>
-            S'il s'agit de la première nuit, il ouvrira les yeux à l'appel de son rôle pour se manifester au MJ, puis les refermera sans agir.<br>
-            Le MJ feindra l'action du paralysé pour ne pas révéler son rôle.</p>
-            
+        <div id="statusMessage"></div> <!-- Zone pour le message conditionnel -->
     </header>
-
+       
     <div class="button-container">
         <!-- Les boutons des joueurs seront générés par JavaScript -->
     </div>
 
     <div class="action-buttons">
-        <button id="mutantMutueButton" class="start-button">Les mutant vont contaminer ou Tuer </button>
+        <button id="nextButton" class="start-button">Les mutant vont contaminer ou Tuer </button>
     </div>
 
     <script src="para.js"></script>

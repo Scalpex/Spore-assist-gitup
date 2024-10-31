@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Briefing</title>
     <link rel="stylesheet" href="styles.css">
-    <script defer src="briefing.js"></script>
+    <script defer src="briefing.js"></script> <!-- JavaScript pour gérer l'audio -->
 </head>
 <body class="briefing-page">
     <header>
@@ -15,19 +15,23 @@
             <span id="turnDisplay">1</span> <!-- Valeur par défaut si localStorage n'est pas défini -->
         </div>
         <h1 class="title">Briefing</h1>
+
+        <!-- Bouton "Play" ajouté -->
+        <button class="play-button" id="playButton">▶</button>
     </header>
     
     <div class="content">
         <!-- Texte d'introduction -->
         <div class="intro-text">
-            <p>Bienvenu à bord du <strong>SLS Orbitron</strong> à destination du système Cygnus X-1. Je suis votre ordinateur de bord.</p>
-            <p>La vie sur Terre telle que vous l'avez connue n'est plus possible suite à l'arrivée de la <strong>spore</strong> hautement mutagène Sras-Sporvid 19. Vous avez été sélectionné parmi les dernier survivants pour tenter de faire perdurer l'humanité ailleurs dans l'espace.</p>
-            <p>Malheureusement, j'ai dû activer le protocole de réveil d'urgence car la présence de la spore a été détectée à bord. Vous allez devoir trouver et éliminer cet organisme avant qu'il ne vous contamine tous.</p>
-            <p>Préalablement, vous allez devoir choisir un <strong>leader</strong> pour vous départager en cas de blocage et d'égalité. Par la suite, vous serez redirigés vers vos cocons individuels pour vous reposer de l’hibernation cryogénique. Dès demain, pour éviter toute propagation, vous ne pourrez plus vous regrouper à plus de 4 personnes. Bonne chance...</p>
+            <div id="typewriter"></div>
+            
         </div>
 
-        <!-- Bouton pour aller à la page de sélection du leader -->
-        <button id="leaderButton" class="leader-button">Élection de votre leader</button>
+        <!-- Bouton pour aller à la page de sélection du ⭐leader -->
+        <button id="leaderButton" class="leader-button">Élection de votre ⭐Leader⭐</button>
     </div>
+
+    <!-- Élément audio caché pour le fichier Briefing -->
+    <audio id="briefingAudio" src="./audio/Briefing.mp3"></audio>
 </body>
 </html>

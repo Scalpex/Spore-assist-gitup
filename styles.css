@@ -38,9 +38,10 @@ body, html {
 
 /* Image au milieu */
 .intro-image {
-    max-width: 80%; /* Ajuster la largeur de l'image */
-    max-height: 80vh; /* Ajuster la hauteur de l'image */
-    margin-bottom: 30px; /* Espacement par rapport au bouton */
+    max-width: 130%; /* Ajuster la largeur de l'image */
+    max-height: 240vh; /* Ajuster la hauteur de l'image */
+    margin-bottom: 15px; /* Espacement par rapport au bouton */
+    border-radius: 10px;
 }
 
 
@@ -81,11 +82,21 @@ body, html {
 .container {
     text-align: center;
     color: #fff;
+    position: sticky;
 }
-
+/* Assurez-vous que les titres sont bien visibles */
+h1 {
+    color: #8cce35; /* Ajustez la couleur si nécessaire pour qu'elle ressorte sur le fond */
+    font-size: 30px; /* Assurez-vous que la taille est visible */
+    position: sticky;
+    margin: 20px 0; /* Ajoutez du marges pour dégager le titre */
+    text-align: center; /* Centrez le texte si besoin */
+    padding-top: 60px; /* Ajoute de l'espace au-dessus du titre */
+}
 /* Formulaire pour ajouter un joueur */
 .form-container {
     margin-bottom: 25px;
+    position: sticky;
 }
 
 /* Champ de saisie du prénom avec hauteur augmentée */
@@ -100,13 +111,16 @@ body, html {
 
 /* Liste des joueurs */
 .player-list {
+    max-height: 750px; /* Ajuster selon le besoin */
+    overflow-y: auto;
     list-style: none;
     padding: 0;
+    gap: 15px;
 }
 
 /* Espace vertical pour les boutons sur la page "équipe" */
 .equip-page .button {
-    margin-bottom: 12px; /* Ajoutez plus d'espace en dessous des boutons */
+    margin-bottom: 22px; /* Ajoutez plus d'espace en dessous des boutons */
 }
 
 /* Élément de la liste de joueurs */
@@ -116,13 +130,12 @@ body, html {
     align-items: center;
     padding: 10px;
     gap: 15px;
-    margin-top: 25px;
-    margin: 20px ;
+    margin: 20px 0; /* Ajustez les marges pour créer un espace vertical plus visible */
     border: 1px solid #8cce35;
     border-radius: 5px;
-    background-color:  #000;
-    color: #8cce35; /* Couleur lumineuse pour le texte */
-    box-shadow: 0 0 10px #8cce35, 0 0 20px #8cce35; /* Ombre lumineuse */
+    background-color: #000;
+    color: #8cce35;
+    box-shadow: 0 0 10px #8cce35, 0 0 20px #8cce35;
 }
 
 /* Style du bouton d'ajout */
@@ -197,11 +210,31 @@ body, html {
     padding: 20px;
 }
 
+/* Style du bouton "Play" */
+.play-button {
+    position: sticky;
+    background-color: transparent; /* Fond transparent */
+    border: none; /* Pas de bordure */
+    font-size: 24px; /* Taille de l'icône */
+    color: #8cce35; /* Couleur verte */
+    cursor: pointer; /* Curseur pointer */
+    outline: none; /* Supprime les contours */
+    margin-right: 20px; /* Espacement à droite */
+    transition: transform 0.3s;
+    display: flex; /* Aligner au centre verticalement */
+    align-items: center;
+}
+
+/* Effet au survol du bouton */
+.play-button:hover {
+    transform: scale(1.2); /* Légère augmentation de la taille au survol */
+}
+
 /* Header et positionnement du cadre "Jour" */
 header {
     width: 100%;
-    display: flex;
-    justify-content: space-between; /* Pour écarter les éléments */
+    display:flex;
+    justify-content:stretch; /* Pour écarter les éléments */
     align-items: center;
     padding: 10px 20px;
     position: relative;
@@ -209,6 +242,7 @@ header {
 
 /* Cadre pour le "Jour" */
 .turn-box {
+    position: sticky;
     background-color: #222; /* Fond gris sombre */
     color: #8cce35; /* Texte vert clair */
     padding: 5px 15px;
@@ -335,7 +369,6 @@ body {
 .leader-player-buttons-container {
     display: flex;
     justify-content: center;
-    width: 100%;
     padding: 20px;
     margin: 0 auto;
 }
@@ -343,12 +376,11 @@ body {
 .leader-player-list {
     display: grid;
     grid-template-columns: 1fr 1fr; /* 2 colonnes */
-    gap: 15px;
-    width: 80%;
 }
 
 /* Style pour les boutons des joueurs */
 .player-item {
+    font-family: 'Tektur', sans-serif; /* Police Tektur pour le bouton */
     background-color: #333;
     color: #fff;
     padding: 15px;
@@ -358,9 +390,8 @@ body {
     font-size: 18px;
     text-align: center;
     transition: background 0.3s;
-    width: 90%; /* Élargi les boutons pour éviter les retours à la ligne */
     white-space: nowrap; /* Empêche les retours à la ligne dans les boutons */
-    margin: 3px;
+    margin: 15px;
     display: flex;
     justify-content: center; /* Centre le texte */
     align-items: center;
@@ -379,6 +410,7 @@ body {
     padding: 15px 30px;
     font-size: 18px;
     cursor: pointer;
+    align-items: center;
     border-radius: 10px;
     transition: background 0.3s, transform 0.3s;
     animation: blink 6s infinite; /* Ajout de l'animation de clignotement plus lent */
@@ -402,3 +434,4 @@ body {
         opacity: 0.5;
     }
 }
+

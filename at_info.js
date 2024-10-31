@@ -21,6 +21,19 @@ function updatePlayerButtons() {
             button.classList.add('selected');
         }
 
+        if (player.role !== 'Astronaute') {
+            button.disabled = true; // Désactive le bouton pour les non-Astronautes
+        }
+
+        if (player.role === 'Mutant') {
+            button.classList.add('mutant-light-effect');
+        }
+
+        if (player.role === 'medecin') {
+            button.classList.add('medecin-light-effect');
+        }
+
+
         button.addEventListener('click', () => {
             // Désélectionner l'ancien joueur
             selectedPlayerIndex = index;
@@ -33,12 +46,25 @@ function updatePlayerButtons() {
 
 updatePlayerButtons();
 
-// Fonction pour sélectionner un joueur au hasard
-document.getElementById('randomMutantButton').addEventListener('click', () => {
-    const randomIndex = Math.floor(Math.random() * players.length);
-    selectedPlayerIndex = randomIndex;
-    updatePlayerButtons();
+// Fonction pour sélectionner un joueur au hasard avec le rôle "Astronaute"
+document.getElementById('randomButton').addEventListener('click', () => {
+    const astronauts = players.filter(player => player.role === 'Astronaute');
+    
+    // Vérifier s'il y a au moins un joueur avec le rôle "Astronaute"
+    if (astronauts.length > 0) {
+        const randomIndex = Math.floor(Math.random() * astronauts.length);
+        const selectedAstronaut = astronauts[randomIndex];
+
+        // Obtenir l'index du joueur dans la liste complète des joueurs
+        selectedPlayerIndex = players.indexOf(selectedAstronaut);
+
+        updatePlayerButtons();
+    } else {
+        alert("Aucun joueur avec le rôle 'Astronaute' disponible.");
+    }
 });
+
+
 
 // Fonction pour enregistrer les joueurs dans le localStorage
 function savePlayersToLocalStorage() {
@@ -46,14 +72,11 @@ function savePlayersToLocalStorage() {
 }
 
 // Bouton "Le mutant va paralyser"
-document.getElementById('mutantParalyseButton').addEventListener('click', () => {
+document.getElementById('nextButton').addEventListener('click', () => {
     if (selectedPlayerIndex !== null) {
-        players.forEach(p => { p.role = "Astronaute"; p.genome = ""; }); // Réinitialiser les rôles et génomes
-        players[selectedPlayerIndex].role = "Mutant"; // Attribuer le rôle de mutant
-        players[selectedPlayerIndex].genome = "hôte"; // Attribuer le génome
-        players[selectedPlayerIndex].status = "mut"; // Attribuer le génome
+        players[selectedPlayerIndex].role = "info"; // Attribuer le rôle de mutant
         savePlayersToLocalStorage();
-        window.location.href = 'para.html'; // Rediriger vers la page para
+        window.location.href = 'info.html'; // Rediriger vers la page para
     }
 });
 

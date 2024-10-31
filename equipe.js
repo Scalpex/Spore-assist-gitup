@@ -74,7 +74,7 @@ function resetPlayerAttributes() {
         player.genome = "";
         player.status = "sain";
         player.trace = "";
-        player.voteCount = 0;
+        player.voteCount = 0;   
     });
     savePlayersToLocalStorage(); // Sauvegarde les joueurs réinitialisés
 }

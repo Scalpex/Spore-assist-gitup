@@ -21,8 +21,17 @@ function updatePlayerButtons() {
             button.classList.add('selected');
         }
 
+        // Vérifier si le joueur a le statut "mut" et ajouter la classe correspondante
+        if (player.status === 'mut') {
+            button.classList.add('mut-light-effect'); // Ajoute la classe pour l'effet lumineux
+        }
+
+        if (player.status === 'mort') {
+            button.classList.add('dead-light-effect'); // Ajoute la classe pour l'effet lumineux
+        }
+
         button.addEventListener('click', () => {
-            // Désélectionner l'ancien joueur
+            // Sélectionner le joueur et mettre à jour les boutons
             selectedPlayerIndex = index;
             updatePlayerButtons();
         });
@@ -31,29 +40,21 @@ function updatePlayerButtons() {
     });
 }
 
+// Appel de la fonction pour afficher les boutons joueurs
 updatePlayerButtons();
-
-// Fonction pour sélectionner un joueur au hasard
-document.getElementById('randomMutantButton').addEventListener('click', () => {
-    const randomIndex = Math.floor(Math.random() * players.length);
-    selectedPlayerIndex = randomIndex;
-    updatePlayerButtons();
-});
 
 // Fonction pour enregistrer les joueurs dans le localStorage
 function savePlayersToLocalStorage() {
     localStorage.setItem('players', JSON.stringify(players));
 }
 
-// Bouton "Le mutant va paralyser"
-document.getElementById('mutantParalyseButton').addEventListener('click', () => {
+// Bouton "Le mutant va Mutuer"
+document.getElementById('mutantMutueButton').addEventListener('click', () => {
     if (selectedPlayerIndex !== null) {
-        players.forEach(p => { p.role = "Astronaute"; p.genome = ""; }); // Réinitialiser les rôles et génomes
-        players[selectedPlayerIndex].role = "Mutant"; // Attribuer le rôle de mutant
-        players[selectedPlayerIndex].genome = "hôte"; // Attribuer le génome
-        players[selectedPlayerIndex].status = "mut"; // Attribuer le génome
+        players[selectedPlayerIndex].status = "para"; // Attribuer statut para
+        players[selectedPlayerIndex].trace += "P" + localStorage.getItem('turn'); // mettre a jour la trace
         savePlayersToLocalStorage();
-        window.location.href = 'para.html'; // Rediriger vers la page para
+        window.location.href = 'mutue.html'; // Rediriger vers la page Mutue
     }
 });
 
