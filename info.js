@@ -1,3 +1,13 @@
+let players = JSON.parse(localStorage.getItem('players')) || [];
+const mut = players.find(player => player.status === 'mut');
+const turn = localStorage.getItem('turn');
+const checkDoc = players.filter(player => player.role === 'medecin' && (player.status === 'mort' || player.status === 'mut')).length;
+if (turn !== 1 &&(checkDoc === 2 || !mut)){window.location.href = "fin.html";}
+
+else {
+
+
+
 // Afficher le compteur de nuit depuis le localStorage
 const turnDisplay = document.getElementById('turnDisplay');
 turnDisplay.textContent = localStorage.getItem('turn');
@@ -14,13 +24,13 @@ function updateStatusMessage() {
 
     if (informaticien) {
         if (informaticien.status === 'para') {
-            statusMessageDiv.innerHTML = `L'informaticien est <span class="status-paralyzed">paralysé</span>.`;
+            statusMessageDiv.innerHTML = `(L'informaticien est <span class="status-paralyzed">paralysé</span>.)`;
         } else if (informaticien.status === 'mut') {
-            statusMessageDiv.innerHTML = `L'informaticien est <span class="status-mutated">muté</span>.`;
+            statusMessageDiv.innerHTML = `(L'informaticien est <span class="status-mutated">muté</span>.)`;
         } else if (informaticien.status === 'mort') {
-            statusMessageDiv.innerHTML = `L'informaticien est <span class="status-dead">mort</span>.`;
+            statusMessageDiv.innerHTML = `(L'informaticien est <span class="status-dead">mort</span>.)`;
         } else {
-            statusMessageDiv.textContent = `Il y a ${mutantsCount} mutant(s) à bord.`;
+            statusMessageDiv.textContent = `(il y a ${mutantsCount} mutant(s) à bord.)`;
         }
     }
 }
@@ -51,3 +61,4 @@ document.getElementById('exitButton').addEventListener('click', () => {
 // Appel initial pour afficher les boutons joueurs et mettre à jour l'état des boutons d'action
 updatePlayerButtons();
 updateActionButtons();
+}

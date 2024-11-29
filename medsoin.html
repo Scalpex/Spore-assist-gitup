@@ -16,22 +16,23 @@
             </button>
         </div>
         <p class="header-description">
-            Les médecins peuvent soigner un joueur chacun,<br>
-            ou décider ensemble de tuer un joueur pour l'éliminer.<br>
-            Attention les mutants hôtes sont insensible au soin.  </p>
+           Les médecin désignent chacun un joueur qu'ils tentent de soigner <br> ou se mettent d'accord pour tuer ensemble une personne.</p>
     </header>
 
     <div class="action-selection">
         <button id="healButton" class="action-button heal">🩺 Soignent 🩺</button>
         <button id="killButton" class="action-button kill">⚰️ Tuent ⚰️</button>
+        
     </div>
 
+    <div id="statusMessage"></div>
+    
     <div class="button-container">
         <!-- Les boutons des joueurs seront générés par JavaScript -->
     </div>
 
     <div class="action-buttons">
-        <button id="at_info-Button" class="start-button">Les médecins referment leurs yeux </button>
+        <button id="at_info-Button" class="start-button">Les médecins referment leurs yeux et ensuite je soignerai les joueurs ciblés</button>
     </div>
 
     <script src="medsoin.js"></script>

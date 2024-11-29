@@ -1,73 +1,73 @@
-// Charger la variable "turn" depuis le localStorage et l'afficher
-document.getElementById('turnDisplay').textContent = localStorage.getItem('turn') || '1';
+const turn = parseInt(localStorage.getItem('turn'), 10);
+let players = JSON.parse(localStorage.getItem('players')) || [];
+const mut = players.find(player => player.status === 'mut');
+const checkDoc = players.filter(player => player.role === 'medecin' && (player.status === 'mort' || player.status === 'mut')).length;
 
-// Charger les joueurs depuis le localStorage
+if (turn !== 1 && (checkDoc === 2 || !mut)){window.location.href = "fin.html";}
+
+
+else {
+
+// Afficher le compteur de nuit depuis le localStorage
+const turnDisplay = document.getElementById('turnDisplay');
+turnDisplay.textContent = localStorage.getItem('turn');
+
+// Récupérer la liste des joueurs du localStorage
 let players = JSON.parse(localStorage.getItem('players')) || [];
 
-// Référence aux éléments du DOM
-const leaderPlayerList = document.getElementById('leaderPlayerList');
-const exitButton = document.getElementById('exitButton');
-const validateButton = document.getElementById('validateNightButton');
+// Afficher la liste des joueurs dans des boutons
+const buttonContainer = document.querySelector('.button-container');
+let selectedPlayerIndex = null;
 
-// Fonction pour mettre à jour la liste des joueurs sous forme de boutons en 2 colonnes pour la page leader
-function updateLeaderPlayerList() {
-    leaderPlayerList.innerHTML = '';
+function updatePlayerButtons() {
+    buttonContainer.innerHTML = ''; // Vider la liste actuelle
     players.forEach((player, index) => {
         const button = document.createElement('button');
-        button.className = 'player-item';
+        button.classList.add('player-button');
         button.textContent = player.name;
-
-        // Marquer le leader avec une étoile de chaque côté du nom
-        if (player.rank === '⭐') {
-            button.textContent = `⭐ ${player.name} ⭐`;
+        
+        // Ajout d'effet lumineux si sélectionné
+        if (selectedPlayerIndex === index) {
+            button.classList.add('selected');
         }
 
-        // Ajouter un événement pour choisir le leader
+        if (player.status === 'mort') {
+            button.classList.add('dead-light-effect');
+        }
+
         button.addEventListener('click', () => {
-            setLeader(index);
+            // Désélectionner l'ancien joueur
+            selectedPlayerIndex = index;
+            updatePlayerButtons();
         });
 
-        leaderPlayerList.appendChild(button);
+        buttonContainer.appendChild(button);
     });
 }
+updatePlayerButtons();
 
-// Fonction pour définir le leader
-function setLeader(index) {
-    players.forEach((player, idx) => {
-        if (idx === index) {
-            player.rank = '⭐'; // Définir le joueur comme leader
-        } else {
-            player.rank = ''; // Enlever le statut de leader des autres
-        }
-    });
-    savePlayersToLocalStorage();
-    updateLeaderPlayerList();
-}
 
-// Sauvegarder les joueurs dans le localStorage
+// Fonction pour enregistrer les joueurs dans le localStorage
 function savePlayersToLocalStorage() {
     localStorage.setItem('players', JSON.stringify(players));
 }
 
-// Réinitialiser la variable "turn" et rediriger vers la page équipe
-exitButton.addEventListener('click', () => {
+// Bouton "Le mutant va paralyser"
+document.getElementById("validateNightButton").addEventListener('click', () => {
+    const turn = localStorage.getItem('turn');
+    if (selectedPlayerIndex !== null) {
+        players[selectedPlayerIndex].rank = "chef"; 
+        savePlayersToLocalStorage();
+        if (turn === "1") {
+        window.location.href = 'at_mut.html';
+        } // Rediriger vers la page para
+        else {
+            window.location.href = "para.html"; // Redirection vers la page "para"
+        }
+    } 
+    });
+document.getElementById('exitButton').addEventListener('click', () => {
     localStorage.setItem('turn', '1');
     window.location.href = 'equipe.html';
 });
-
-
-// Vérification de la valeur de "turn" et redirection en fonction
-validateButton.addEventListener('click', () => {
-    const turn = localStorage.getItem('turn');
-    
-    if (turn === "1") {
-        window.location.href = "at_mut.html"; // Redirection vers la page "at_mut"
-    } else {
-        window.location.href = "para.html"; // Redirection vers la page "para"
-    }
-});
-
-
-// Charger la liste des joueurs au démarrage de la page leader
-updateLeaderPlayerList();
-
+}

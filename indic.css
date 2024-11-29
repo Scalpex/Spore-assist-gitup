@@ -1,0 +1,256 @@
+/* Import de la police locale */
+@font-face {
+    font-family: 'Tektur';
+    src: url('./fonts/Tektur.ttf') format('truetype');
+}
+
+/* Style de base pour le body et html */
+body, html {
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Tektur', sans-serif;
+}
+
+/* Style du header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Réduit la largeur du header pour un effet plus compact */
+    max-width: 600px; /* Limite maximale pour éviter de trop élargir sur les écrans larges */
+    padding: 10px;
+    background-color: #000;
+    margin: 0 auto; /* Centre le header horizontalement */
+}
+
+#statusMessage {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 20px;
+    color:#818181;
+    font-size: 22px;
+    margin-bottom: 35px;
+}
+
+/* Styles conditionnels */
+.status-paralyzed {
+    color:#5795e6;
+    display: inline-block; /* Pour s'assurer que l'animation s'applique correctement */
+    text-shadow: 0 0 10px #5795e6, 0 0 20px #5795e6, 0 0 30px #5795e6;
+    animation: paralysis 2s infinite; /* Animation en boucle */  
+}
+
+.status-mutated {
+    color:#7e4dda;
+    display: inline-block; /* Pour s'assurer que l'animation s'applique correctement */
+    animation: blink 6s infinite;
+    text-shadow: 0 0 20px #7e4dda, 0 0 40px #7e4dda, 0 0 60px #7e4dda;
+}
+
+.status-dead {
+    color:#818181;
+    display: inline-block; /* Pour s'assurer que l'animation s'applique correctement */
+    text-shadow: 0 0 10px #818181, 0 0 20px #818181, 0 0 30px #818181;
+}
+
+.status-fana {
+    color:#f53fcd;
+    text-shadow: 0 0 10px #f53fcd, 0 0 20px #f53fcd, 0 0 30px #f53fcd;
+}
+
+/* Titre au centre */
+h1 {
+    color: #f83f3f;
+    text-align: center;
+    margin: 0 10px;
+    font-size: 26px
+}
+
+/* Compteur de nuit aligné à gauche */
+.turn-counter {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #8cce35;
+    background-color: #222;
+    border: 2px solid #8cce35;
+    font-size: 16px;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    display: inline-flex; /* Garde le texte et le numéro sur une seule ligne */
+    align-items: center; /* Centre verticalement le contenu si besoin */
+}
+
+/* Bouton exit aligné à droite */
+.exit-button img {
+    width: 25px;
+    height: 25px;
+}
+/* Style pour le bouton de sortie */
+.exit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Description sous le header */
+.header-description {
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    padding: 0 15px;
+    margin-top: 10px;
+    margin: 0 auto; /* Centre le header horizontalement */
+    width: 100%; /* Réduit la largeur */
+    max-width: 500px;
+}
+
+
+/* Styles des boutons joueurs */
+.button-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Toujours 2 colonnes */
+    gap: 25px; /* Espacement réduit */
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Réduit la largeur pour un effet plus serré */
+    max-width: 550px;
+    margin: 20px 0;
+}
+
+/* Effet de clignotement pour le mutant */
+.player-button.fana-light-effect {
+    border: 5px solid #f53fcd;
+    font-size: 18px;
+    box-shadow: 0 0 20px #f53fcd, 0 0 40px #f53fcd, 0 0 60px #f53fcd;
+}
+
+.player-button.indic-light-effect {
+    border: 5px solid #f83f3f;
+    font-size: 18px;
+    box-shadow: 0 0 20px #f83f3f, 0 0 40px #f83f3f, 0 0 60px #f83f3f;
+    animation: blink 6s infinite;
+}
+
+.player-button.dead-light-effect {
+    color :#818181;
+    border :#333;
+    background-color: #000;
+    text-decoration: line-through; /* Ajoute un effet de texte barré */
+}
+
+
+/* Style individuel pour chaque bouton */
+.player-button {
+    font-family: 'Tektur', sans-serif;
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    border: 1px solid #8cce35;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    text-align: center;
+    transition: background 0.3s;
+    width: 100%; /* Élargi les boutons pour éviter les retours à la ligne */
+    white-space: nowrap; /* Empêche les retours à la ligne dans les boutons */
+    margin: 3px;
+    display: flex;
+    justify-content: center; /* Centre le texte */
+    align-items: center;
+    box-shadow: 0 0 5px #8cce35, 0 0 10px #8cce35, 0 0 15px #8cce35;
+}
+
+/* Effet au survol */
+.player-button:hover {
+    transform: scale(1.05);
+    background-color: #8cce35;
+    color: #000;
+}
+
+/* Effet de clignotement pour le bouton sélectionné */
+.player-button.selected {
+    pointer-events: none; /* Désactiver les événements */
+    background-color: #8cce35;
+}
+
+
+
+/* Conteneur pour les boutons d'action */
+.action-buttons {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%; /* Réduit la largeur pour un look plus serré */
+    max-width: 600px;
+    padding: 10px 0;
+}
+
+
+/* Style pour le bouton "Le mutant mutue" */
+.start-button {
+    align-items: center;
+    background-color: #8cce35;
+    color: #000;
+    border: 2px solid transparent;
+    padding: 12px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.3s;
+    animation: blink 6s infinite;
+    box-shadow: 0 0 15px #8cce35, 0 0 30px #8cce35, 0 0 45px #8cce35;
+    font-family: 'Tektur', sans-serif;
+    width: 100%; /* Réduit la largeur pour s'ajuster aux petits espaces */
+}
+
+/* Effet au survol pour "Le mutant va paralyser" */
+.start-button:hover {
+    transform: scale(1.1);
+}
+
+/* Animation de clignotement */
+@keyframes blink {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+    25%, 75% {
+        opacity: 0.5;
+    }
+}
+
+/* Media Query pour les petits écrans */
+@media (max-width: 600px) {
+    .header-container, .header-description, .button-container, .action-buttons {
+        width: 90%; /* Utilise plus de largeur sur les petits écrans */
+        max-width: none; /* Supprime la limitation de largeur */
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+
+    .turn-counter, .random-button, .start-button {
+        font-size: 14px;
+    }
+
+    .player-button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .action-buttons {
+        flex-direction: column; /* Disposition verticale sur les petits écrans */
+        align-items: center; /* Centre les boutons */
+    }
+
+    .random-button, .start-button {
+        width: 80%; /* Utilise plus de largeur sur les petits écrans */
+        margin-bottom: 10px;
+    }
+}

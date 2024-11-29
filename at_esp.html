@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribution du rôle d espion</title>
+    <link rel="stylesheet" href="at_esp.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="turn-counter">Nuit : <span id="turnDisplay"></span></div>
+            <h1>Attribution du rôle d' <strong>Espion</strong></h1>
+            <button id="exitButton" class="exit-button">
+                <img src="exit.png" alt="Exit" />
+            </button>
+        </div>
+        <p class="header-description">
+            L'espion apprend ce qu'il est arrivé à un joueur cette nuit.
+        </p>
+    </header>
+
+    <div class="button-container">
+        <!-- Les boutons des joueurs seront générés par JavaScript -->
+    </div>
+
+    <div class="action-buttons">
+        <button id="randomButton" class="random-button">Sélectionner au hasard</button>
+        <button id="nextButton" class="start-button">L'espion va enqueter</button>
+    </div>
+
+    <script src="at_esp.js"></script>
+</body>
+</html>
+
+

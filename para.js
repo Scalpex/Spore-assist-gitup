@@ -1,3 +1,12 @@
+const turn = localStorage.getItem('turn');
+let players = JSON.parse(localStorage.getItem('players')) || [];
+const mut = players.find(player => player.status === 'mut');
+const checkDoc = players.filter(player => player.role === 'medecin' && (player.status === 'mort' || player.status === 'mut')).length;
+if (turn !== 1 &&(checkDoc === 2 || !mut)){window.location.href = "fin.html";}
+
+
+else {
+
 // Afficher le compteur de nuit depuis le localStorage
 const turnDisplay = document.getElementById('turnDisplay');
 turnDisplay.textContent = localStorage.getItem('turn');
@@ -52,7 +61,7 @@ function savePlayersToLocalStorage() {
 document.getElementById('mutantMutueButton').addEventListener('click', () => {
     if (selectedPlayerIndex !== null) {
         players[selectedPlayerIndex].status = "para"; // Attribuer statut para
-        players[selectedPlayerIndex].trace += "P" + localStorage.getItem('turn'); // mettre a jour la trace
+        players[selectedPlayerIndex].trace += " P" + localStorage.getItem('turn'); // mettre a jour la trace
         savePlayersToLocalStorage();
         window.location.href = 'mutue.html'; // Rediriger vers la page Mutue
     }
@@ -63,3 +72,5 @@ document.getElementById('exitButton').addEventListener('click', () => {
     localStorage.setItem('turn', '1');
     window.location.href = 'equipe.html';
 });
+
+}

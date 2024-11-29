@@ -34,6 +34,7 @@ addPlayerButton.addEventListener('click', () => {
             status: "sain",
             trace: "",
             voteCount: 0
+            
         };
         players.push(newPlayer);
         playerNameInput.value = ''; // Efface l'input
@@ -74,7 +75,8 @@ function resetPlayerAttributes() {
         player.genome = "";
         player.status = "sain";
         player.trace = "";
-        player.voteCount = 0;   
+        player.voteCount = 0;
+        player.voteTarget = "";  
     });
     savePlayersToLocalStorage(); // Sauvegarde les joueurs réinitialisés
 }
@@ -95,3 +97,13 @@ briefingButton.addEventListener('click', () => {
 
 // Charger les joueurs depuis le localStorage lorsque la page se charge
 loadPlayersFromLocalStorage();
+
+function resetAllVotes() {
+    players.forEach(player => {
+        player.voteTarget = "";
+        player.voteCount = "";
+    });
+    localStorage.setItem('players', JSON.stringify(players)); // Sauvegarder la mise à jour dans le stockage local si nécessaire
+}
+
+resetAllVotes();

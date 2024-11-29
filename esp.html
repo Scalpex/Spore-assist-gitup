@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'espion analyse</title>
+    <link rel="stylesheet" href="esp.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="turn-counter">Nuit : <span id="turnDisplay"></span></div>
+            <h1>L'espion analyse</span></h1>
+            <button id="exitButton" class="exit-button">
+                <img src="exit.png" alt="Exit" />
+            </button>
+        </div>
+        <p class="header-description">
+            Il me montre un joueur et je lui dévoile si le joueur a été durant cette nuit : Para, Mut, Soin, hack et Analysé par le Psy, le géné, l'indic et l'espion. (faire oui/non de la tête)
+        </p>
+        <div id="statusMessage"></div> <!-- Zone pour le message conditionnel -->
+
+        <div class="button-container">
+            <!-- Les boutons des joueurs seront générés par JavaScript -->
+        </div>
+    </header>
+       
+
+        <div class="action-buttons">
+        <button id="nextButton" class="start-button">l'espion referme ses yeux</button>
+    </div>
+
+    <script src="esp.js"></script>
+</body>
+</html>

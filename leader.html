@@ -4,25 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Élection de votre leader</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="leader.css">
+
 </head>
 <body>
-    <header class="header">
+    <header class="header-container">
         <div class="turn-counter">Jour : <span id="turnDisplay">1</span></div>
-        <h1 class="leader-title">Élection de votre leader</h1>
+        <h1 class="leader-title">Élection du Leader</h1>
         <button id="exitButton" class="exit-button">
-            <img src="exit.png" alt="Exit" class="exit-icon">
+            <img src="exit.png" alt="Exit" />
         </button>
     </header>
-    
-    <main>
-        <div class="leader-player-buttons-container">
-            <div id="leaderPlayerList" class="leader-player-list"></div>
-        </div>
-        <button id="validateNightButton" class="start-button">Valider et démarrer la nuit</button>
+    <p class="header-description">
+        Il pourra départager les égalités lors des votes en fin de nuit.<br>
+        S'il est tué, un nouveau leader devra être choisi immédiatement.</p>
+        
+</header>
 
-    </main>
+    <div class="button-container">
+        <!-- Les boutons des joueurs seront générés par JavaScript -->
+    </div>
+
+    <div class="action-buttons">
+
+    <body>
+        <button id="validateNightButton" class="start-button">Valider et démarrer la nuit</button>
+        
+    </div>
 
     <script src="leader.js"></script>
 </body>
 </html>
+ 

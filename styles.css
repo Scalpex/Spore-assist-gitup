@@ -19,6 +19,14 @@ body, html {
     font-family: 'Tektur', sans-serif; /* Appliquer Tektur à toute l'application */
 }
 
+
+#typewriter {
+color: #fff;
+font-size: 20px;
+
+
+}
+
 /* Style spécifique à la page index */
 .index-page {
     background-color: #000; /* Fond noir */

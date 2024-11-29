@@ -16,6 +16,7 @@ function updatePlayerButtons() {
         const button = document.createElement('button');
         button.classList.add('player-button');
         button.textContent = player.name;
+        
 
         // Vérifier si le joueur est sélectionné
         if (selectedPlayerIndices.includes(index)) {

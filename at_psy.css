@@ -120,6 +120,8 @@ h1 {
     border: 5px solid #4350ff;
     animation: blink 6s infinite;
     box-shadow: 0 0 20px #4350ff, 0 0 40px #4350ff, 0 0 60px #4350ff;
+    background-color: #8cce35;
+    color: #000;
 }
 
 .player-button.mutant-light-effect {
@@ -197,6 +199,12 @@ h1 {
 }
 
 
+.player-button.para-light-effect {
+    border: 1px solid #5795e6;
+    box-shadow: 0 0 10px #5795e6, 0 0 20px #5795e6, 0 0 30px #5795e6;
+    animation: paralysis 2s infinite; /* Animation en boucle */  
+}
+
 @keyframes paralysis {
     0% { transform: translateX(0);
         opacity: 1; }
@@ -207,17 +215,17 @@ h1 {
     15% { transform: translateX(1px);
         opacity: 0.6; }
     20% { transform: translateX(0); 
-        opacity: 2;}
+        opacity: 0.6;}
     25% { transform: translateX(3px);
-        opacity: 2; }
+        opacity: 0.6; }
     30% { transform: translateX(-2px);
         opacity: 0.6; }
     35% { transform: translateX(1px);
-        opacity: 2; }
+        opacity: 0.6; }
     40% { transform: translateX(0);
-        opacity: 2; }
+        opacity: 0.6; }
     100% { transform: translateX(0);
-        opacity: 2; }
+        opacity: 0.6; }
 }
 
 /* Animation de clignotement */

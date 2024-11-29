@@ -25,8 +25,14 @@ function updatePlayerButtons() {
             button.disabled = true; // Désactive le bouton pour les non-Astronautes
         }
 
-        if (player.role === 'Mutant') {
-            button.classList.add('mutant-light-effect');
+        // Vérifier si le joueur a le statut "mut" et ajouter la classe correspondante
+        if (player.status === 'mut') {
+        button.classList.add('mutant-light-effect'); // Ajoute la classe pour l'effet lumineux
+        }
+    
+        // Vérifier si le joueur a le statut "para" et ajouter la classe correspondante
+        if (player.status === 'para') {
+        button.classList.add('para-light-effect'); // Ajoute la classe pour l'effet lumineux
         }
 
         if (player.role === 'medecin') {
@@ -42,6 +48,14 @@ function updatePlayerButtons() {
 
         buttonContainer.appendChild(button);
     });
+
+    const nextButton = document.getElementById('nextButton');
+     if (selectedPlayerIndex !== null) {
+         const selectedPlayer = players[selectedPlayerIndex];
+         nextButton.textContent = `${selectedPlayer.name} est l'informaticien'`;
+     } else {
+         nextButton.textContent = "Sélectionnez un joueur";
+     }
 }
 
 updatePlayerButtons();

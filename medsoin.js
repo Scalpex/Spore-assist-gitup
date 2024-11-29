@@ -1,3 +1,12 @@
+let players = JSON.parse(localStorage.getItem('players')) || [];
+const mut = players.find(player => player.status === 'mut');
+const turn = localStorage.getItem('turn');
+const checkDoc = players.filter(player => player.role === 'medecin' && (player.status === 'mort' || player.status === 'mut')).length;
+if (turn !== 1 &&(checkDoc === 2 || !mut)){window.location.href = "fin.html";}
+
+else {
+
+
 // Afficher le compteur de nuit depuis le localStorage
 const turnDisplay = document.getElementById('turnDisplay');
 turnDisplay.textContent = localStorage.getItem('turn');
@@ -19,13 +28,46 @@ function getHealthyDoctorsCount() {
     return players.filter(player => player.role === 'medecin' && player.status === 'sain').length;
 }
 
+function updateStatusMessage() {
+    const statusMessageDiv = document.getElementById('statusMessage');
+    
+    // Trouver tous les joueurs avec le rôle "médecin"
+    const medics = players.filter(player => player.role === 'medecin');
+
+    // Réinitialiser le contenu de la div
+    statusMessageDiv.innerHTML = '';
+
+    // Générer un message pour chaque médecin sauf si son statut est "sain"
+    medics.forEach(med => {
+        if (med.status !== 'sain') { // Ignorer les médecins sains
+            let message = `(Le médecin ${med.name} est `;
+            if (med.status === 'para') {
+                message += `<span class="status-paralyzed">paralysé)</span>.`;
+            } else if (med.status === 'mut') {
+                message += `<span class="status-mutated">muté)</span>.`;
+            } else if (med.status === 'mort') {
+                message += `<span class="status-dead">mort)</span>.`;
+            }
+            // Ajouter chaque message dans une ligne distincte
+            const messageElement = document.createElement('div');
+            messageElement.innerHTML = message;
+            statusMessageDiv.appendChild(messageElement);
+        }
+    });
+}
+
+
+updateStatusMessage();
+
+
+
 // Fonction pour activer ou désactiver les boutons d'action en fonction du nombre de médecins sains
 function updateActionButtons() {
     const healthyDoctorsCount = getHealthyDoctorsCount();
     // Désactiver les boutons "heal" et "kill" si aucun médecin sain n'est disponible
     healButton.disabled = (healthyDoctorsCount === 0);
     killButton.disabled = (healthyDoctorsCount === 0);
-    button.disabled = (healthyDoctorsCount === 0);
+    
 }
 
 // Met à jour les boutons des joueurs en fonction des critères
@@ -118,35 +160,53 @@ killButton.addEventListener('click', () => {
 // Bouton "info" pour appliquer les effets sélectionnés sur les joueurs choisis
 document.getElementById('at_info-Button').addEventListener('click', () => {
     const turn = localStorage.getItem('turn');
+    const healthyDoctorsCount = getHealthyDoctorsCount();
+    const mutHote = players.find(player => (player.trace.includes("M" + turn)));
 
-    if (selectedPlayerIndices.length > 0 && actionSelected) {
+
+
+    if ((healthyDoctorsCount > 0 && selectedPlayerIndices.length === 0)||(healthyDoctorsCount > 0 && actionSelected === null)){
+        alert("Veuillez sélectionner des joueurs et une action avant de continuer.");
+    }
+
+    else{
         selectedPlayerIndices.forEach(index => {
             const player = players[index];
             if (actionSelected === 'heal') {
-                // Soigner le joueur, sauf s'il est "hôte"
-                if (player.genome !== "hôte") {
-                    player.status = "sain";
-                }
                 player.trace += " S" + turn;
-            } else if (actionSelected === 'kill') {
+                // Soigner le joueur, sauf s'il est "hôte"
+                if (player.genome !== "hôte" && player.status === "mut") {
+                    player.status = "sain";
+                    
+            }}
+            else if (actionSelected === 'kill') {
                 player.status = "mort";
-                player.trace += " T" + turn;
+                player.trace += " T" + turn;}
+
+                savePlayersToLocalStorage();
+                if (player.genome === "hôte" && player.status === 'muté' && actionSelected === 'heal' && player.role !== "Mutant"){
+                    alert(" Ne pas soigner " + mutHote.name +  " car il est hôte.");}
+                updatePlayerButtons();
+            })
+    
+    
+            
+    if (turn === "1") {
+        const mutResist = players.find(player => (player.trace.includes("M" + 1)));
+
+        if(mutResist.genome === 'résist'){
+            alert("Soigner également " + mutResist.name +  " car il est résistant");}
+        window.location.href = "at_info.html";
+            } 
+    else {
+        window.location.href = "info.html";
+            }
             }
         });
-        
         savePlayersToLocalStorage();
-        updatePlayerButtons(); // Mise à jour des boutons après changement de statut
+        updatePlayerButtons();
+    
 
-        // Redirection selon le tour
-        if (turn === "1") {
-            window.location.href = "at_info.html";
-        } else {
-            window.location.href = "info.html";
-        }
-    } else {
-        alert("Veuillez sélectionner des joueurs et une action avant de continuer.");
-    }
-});
 
 // Bouton de sortie pour retourner à la page "équipe" et réinitialiser la variable "turn" à 1
 document.getElementById('exitButton').addEventListener('click', () => {
@@ -157,3 +217,5 @@ document.getElementById('exitButton').addEventListener('click', () => {
 // Appel initial pour afficher les boutons joueurs et mettre à jour l'état des boutons d'action
 updatePlayerButtons();
 updateActionButtons();
+
+}

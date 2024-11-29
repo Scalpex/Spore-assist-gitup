@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote</title>
+    <link rel="stylesheet" href="vote.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="turn-counter">jour : <span id="turnDisplay"></span></div>
+            <h1>Résultats des votes</span></h1>
+            <button id="exitButton" class="exit-button">
+                <img src="exit.png" alt="Exit" />
+            </button>
+        </div>
+
+        <p class="header-description">
+            
+        </p>
+    </header>
+    <div class="container">
+        <!-- Colonne pour sélectionner le joueur votant -->
+        <div class="column" id="voterColumn">
+            <h3>Je suis :</h3>
+            <div id="voterList" class="player-buttons"></div>
+        </div>
+        
+        <!-- Colonne pour sélectionner la cible du vote -->
+        <div class="column" id="targetColumn">
+            <h3>Vote pour :</h3>
+            <div id="targetList" class="player-buttons"></div>
+            <button id="blankVoteButton" class="blankVote-Button">Vote blanc</button>
+        </div>
+    </div>
+    
+    <div id="voteCounter"></div>
+    <button id="submitVoteButton" class="action-buttons">Enregistrer le vote</button>
+    <button id="showResultsButton" class="hidden">Afficher les résultats</button>
+
+    <script src="vote.js"></script>
+</body>
+</html>

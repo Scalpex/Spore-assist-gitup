@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker hack</title>
+    <link rel="stylesheet" href="hack.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="turn-counter">Nuit : <span id="turnDisplay"></span></div>
+            <h1>Le hacker choisi sa cible</h1>
+            <button id="exitButton" class="exit-button">
+                <img src="exit.png" alt="Exit" />
+            </button>
+
+       
+    </header>
+    <p class="header-description">
+        Il peut choisir de hacker (montrer ses doigts): <br>
+        (1) l'informaticien , (2) le Psychologue ou (3) le Généticien<br><br>
+        Et je lui dévoile le nombre de mutants ou la cible du psy/génét.<br> et si cette cible est: mutante ou non, ou bien: hôte, réistante ou neutre.<br> (oui/non de la tête)
+    </p>
+    <div id="statusMessage"></div> <!-- Zone pour le message conditionnel -->
+</div>
+
+    <div class="action-selection">
+        <button id="infoButton" class="action-button info">Informaticien</button>
+        <button id="psyButton" class="action-button psy">Psychologue</button>
+        <button id="geneButton" class="action-button gene">Geneticien</button>
+    </div>
+
+    <div id="resultMessage"></div>
+
+    <div class="action-buttons">
+        <button id="nextButton" class="start-button">Le hacker referme les yeux</button>
+    </div>
+
+    <script src="hack.js"></script>
+</body>
+</html>
+
+
+

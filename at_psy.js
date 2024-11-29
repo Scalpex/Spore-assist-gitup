@@ -21,13 +21,20 @@ function updatePlayerButtons() {
             button.classList.add('selected');
         }
 
+        if (player.status === 'mut') {
+        button.classList.add('mutant-light-effect'); // Ajoute la classe pour l'effet lumineux
+        }
+        
+        // Vérifier si le joueur a le statut "para" et ajouter la classe correspondante
+        if (player.status === 'para') {
+        button.classList.add('para-light-effect'); // Ajoute la classe pour l'effet lumineux
+        }   
+
         if (player.role !== 'Astronaute') {
             button.disabled = true; // Désactive le bouton pour les non-Astronautes
         }
 
-        if (player.role === 'Mutant') {
-            button.classList.add('mutant-light-effect');
-        }
+        
 
         if (player.role === 'medecin') {
             button.classList.add('medecin-light-effect');
@@ -46,6 +53,14 @@ function updatePlayerButtons() {
 
         buttonContainer.appendChild(button);
     });
+
+    const nextButton = document.getElementById('nextButton');
+     if (selectedPlayerIndex !== null) {
+         const selectedPlayer = players[selectedPlayerIndex];
+         nextButton.textContent = `${selectedPlayer.name} est le psycologue`;
+     } else {
+         nextButton.textContent = "Sélectionnez un joueur";
+     }
 }
 
 updatePlayerButtons();

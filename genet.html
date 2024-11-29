@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le généticien analyse</title>
+    <link rel="stylesheet" href="genet.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="turn-counter">Nuit : <span id="turnDisplay"></span></div>
+            <h1>Le Généticien Analyse</span></h1>
+            <button id="exitButton" class="exit-button">
+                <img src="exit.png" alt="Exit" />
+            </button>
+        </div>
+        <p class="header-description">
+            Il choisi une cible pour voir si ce joueur est: ... <br><span class ="résist-word">résistant</span>, <span class ="neutre-word">Neutre</span> ou
+             <span class ="host-word">Hôte</span>. <br> (faire oui/non de la tête à chaque fois)
+        </p>
+
+
+        <div id="statusMessage"></div> <!-- Zone pour le message conditionnel -->
+
+        <div class="button-container">
+            <!-- Les boutons des joueurs seront générés par JavaScript -->
+        </div>
+    </header>
+       
+
+        <div class="action-buttons">
+        <button id="nextButton" class="start-button">le généticien referme ses yeux</button>
+    </div>
+
+    <script src="genet.js"></script>
+</body>
+</html>

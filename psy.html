@@ -3,29 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les mutants paralysent</title>
+    <title>Le psy analyse</title>
     <link rel="stylesheet" href="psy.css">
 </head>
 <body>
     <header>
         <div class="header-container">
             <div class="turn-counter">Nuit : <span id="turnDisplay"></span></div>
-            <h1>Les Mutants <span class="para-word">Paralisent</span></h1>
+            <h1>Le Psychologue Analyse</span></h1>
             <button id="exitButton" class="exit-button">
                 <img src="exit.png" alt="Exit" />
             </button>
         </div>
+
+        <p class="header-description">
+            Il me désigne un joueur pour voir si il est: ... <br>
+            Mutant ou non. (oui/non de la tête).</p>
         <div id="statusMessage"></div> <!-- Zone pour le message conditionnel -->
+
+        <div class="button-container">
+            <!-- Les boutons des joueurs seront générés par JavaScript -->
+        </div>
     </header>
        
-    <div class="button-container">
-        <!-- Les boutons des joueurs seront générés par JavaScript -->
+
+        <div class="action-buttons">
+        <button id="nextButton" class="start-button">Le psy referme ses yeux</button>
     </div>
 
-    <div class="action-buttons">
-        <button id="nextButton" class="start-button">Les mutant vont contaminer ou Tuer </button>
-    </div>
-
-    <script src="para.js"></script>
+    <script src="psy.js"></script>
 </body>
 </html>

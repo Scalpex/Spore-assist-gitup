@@ -23,7 +23,7 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%; /* Réduit la largeur du header pour un effet plus compact */
+    width: 100%; /* Réduit la largeur du header pour un effet plus compact */
     max-width: 600px; /* Limite maximale pour éviter de trop élargir sur les écrans larges */
     padding: 10px;
     background-color: #000;
@@ -72,7 +72,7 @@ h1 {
     padding: 0 15px;
     margin-top: 10px;
     margin: 0 auto; /* Centre le header horizontalement */
-    width: 80%; /* Réduit la largeur */
+    width: 100%; /* Réduit la largeur */
     max-width: 600px;
 }
 
@@ -84,9 +84,9 @@ h1 {
 
 
 .kill-word {
-    color:#818181;
+    color:#fff;
     display: inline-block; /* Pour s'assurer que l'animation s'applique correctement */
-    text-shadow: 0 0 10px #818181, 0 0 20px #818181, 0 0 30px #818181;
+    text-shadow: 0 0 10px #ff4444, 0 0 20px #ff4444, 0 0 30px #ff4444;
 }
 
 
@@ -140,7 +140,7 @@ h1 {
 .action-button.kill {
     font-size: 16px;
     background-color: #000000; /* Gris clair */
-    color: #818181;
+    color: #ff4444;
     border: 3px solid #818181;
     box-shadow: 0 0 15px #818181, 0 0 30px #818181, 0 0 45px #818181;
 }
@@ -191,7 +191,7 @@ h1 {
     gap: 25px; /* Espacement réduit */
     justify-content: center;
     align-items: center;
-    width: 80%; /* Réduit la largeur pour un effet plus serré */
+    width: 100%; /* Réduit la largeur pour un effet plus serré */
     max-width: 600px;
     margin: 20px 0;
 }
@@ -201,6 +201,11 @@ h1 {
     border :#333;
     background-color: #000;
     text-decoration: line-through; /* Ajoute un effet de texte barré */
+}
+
+.player-button.résist-light-effect {
+    color: #e9f863;
+    text-shadow: 0 0 10px #e9f863, 0 0 20px #e9f863, 0 0 30px #e9f863;
 }
 
 /* Effet de clignotement pour le mutant */
@@ -250,7 +255,7 @@ h1 {
     font-size: 18px;
     text-align: center;
     transition: background 0.3s;
-    width: 90%; /* Élargi les boutons pour éviter les retours à la ligne */
+    width: 100%; /* Élargi les boutons pour éviter les retours à la ligne */
     white-space: nowrap; /* Empêche les retours à la ligne dans les boutons */
     margin: 3px;
     display: flex;
@@ -291,7 +296,7 @@ h1 {
     animation: blink 6s infinite;
     box-shadow: 0 0 15px #8cce35, 0 0 30px #8cce35, 0 0 45px #8cce35;
     font-family: 'Tektur', sans-serif;
-    width: 50%; /* Réduit la largeur pour s'ajuster aux petits espaces */
+    width: 100%; /* Réduit la largeur pour s'ajuster aux petits espaces */
 }
 
 /* Effet au survol pour "Le mutant va paralyser" */

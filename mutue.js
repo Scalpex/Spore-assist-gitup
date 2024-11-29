@@ -14,7 +14,7 @@ function updatePlayerButtons() {
     players.forEach((player, index) => {
         const button = document.createElement('button');
         button.classList.add('player-button');
-        button.textContent = player.name;
+        button.textContent = player.name + (player.genome === "résist" ? " résist" : "");;
         
         // Ajout d'effet lumineux si sélectionné
         if (selectedPlayerIndex === index) {
@@ -26,6 +26,10 @@ function updatePlayerButtons() {
             } else if (actionSelected === 'kill') {
                 button.classList.add('kill-effect');
             }
+        }
+
+        if (player.genome === 'résist') {
+            button.classList.add('résist-light-effect')
         }
 
         // Vérifier si le joueur a le statut "mut" et ajouter la classe correspondante
@@ -86,8 +90,10 @@ killButton.addEventListener('click', () => {
 document.getElementById('at_med-Button').addEventListener('click', () => {
     if (selectedPlayerIndex !== null && actionSelected) {
         if (actionSelected === 'contaminate') {
-            players[selectedPlayerIndex].status = "mut"; // Attribuer statut "mut"
             players[selectedPlayerIndex].trace += " M" + localStorage.getItem('turn'); // mettre a jour la trace
+            if (players[selectedPlayerIndex].genome !== "résist") {players[selectedPlayerIndex].status = "mut"}; // Attribuer statut "mut"
+        }
+
         } else if (actionSelected === 'kill') {
             players[selectedPlayerIndex].status = "mort"; // Attribuer statut "mort"
             players[selectedPlayerIndex].trace += " T" + localStorage.getItem('turn'); // mettre a jour la trace
@@ -100,13 +106,12 @@ document.getElementById('at_med-Button').addEventListener('click', () => {
         if (turn === "1") {
             window.location.href = "at_med.html"; // Redirection vers la page "at_mut"
         } else {
+            if (players[selectedPlayerIndex].genome === "résist" && actionSelected === 'contaminate'){
+                alert(" Ne pas contaminer " + players[selectedPlayerIndex].name +  " car il est hôte.");}
+            
             window.location.href = "medsoin.html"; // Redirection vers la page "para"
         }
-    } 
-    
-    
-
-});
+    });
 
 // Bouton de sortie pour retourner à la page "équipe" et réinitialiser la variable "turn" à 1
 document.getElementById('exitButton').addEventListener('click', () => {

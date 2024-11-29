@@ -1,0 +1,242 @@
+@font-face {
+    font-family: 'Tektur';
+    src: url('./fonts/Tektur.ttf') format('truetype');
+}
+
+/* Style de base pour le body et html */
+body, html {
+ 
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Tektur', sans-serif;
+}
+
+/* Style du header */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Réduit la largeur du header pour un effet plus compact */
+    max-width: 600px; /* Limite maximale pour éviter de trop élargir sur les écrans larges */
+    padding: 10px;
+    background-color: #000;
+    margin: 0 auto; /* Centre le header horizontalement */
+}
+
+
+
+/* Titre au centre */
+h1 {
+    color: #8cce35;
+    text-align: center;
+    margin: 0 10px;
+    font-size: 26px
+}
+
+/* Compteur de nuit aligné à gauche */
+.turn-counter {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #8cce35;
+    background-color: #222;
+    border: 2px solid #8cce35;
+    font-size: 16px;
+}
+/* Bouton exit aligné à droite */
+.exit-button img {
+    width: 25px;
+    height: 25px;
+}
+/* Style pour le bouton de sortie */
+.exit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Description sous le header */
+.header-description {
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    padding: 0 15px;
+    margin-top: 10px;
+    margin: 0 auto; /* Centre le header horizontalement */
+    width: 100%; /* Réduit la largeur */
+    max-width: 600px;
+}
+
+
+/* Styles des boutons joueurs */
+.button-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Toujours 2 colonnes */
+    gap: 25px; /* Espacement réduit */
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Réduit la largeur pour un effet plus serré */
+    max-width: 600px;
+    margin: 20px 0;
+}
+
+.player-button.dead-light-effect {
+    color :#818181;
+    border :#333;
+    background-color: #000;
+    text-decoration: line-through; /* Ajoute un effet de texte barré */
+}
+
+.yes-effect{
+    color: #8cce35;
+    text-shadow: 0 0 20px #8cce35, 0 0 40px #8cce35, 0 0 60px #8cce35;
+    border :#333;
+    background-color: #000;
+}
+
+.no-effect {
+    color :#818181;
+    border :#333;
+    background-color: #000;
+    text-decoration: line-through; /* Ajoute un effet de texte barré */
+}
+
+
+/* Style individuel pour chaque bouton */
+.player-button {
+    font-family: 'Tektur', sans-serif;
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    border: 1px solid #8cce35;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    text-align: center;
+    transition: background 0.3s;
+    width: 100%; /* Élargi les boutons pour éviter les retours à la ligne */
+    white-space: nowrap; /* Empêche les retours à la ligne dans les boutons */
+    margin: 3px;
+    display: flex;
+    justify-content: center; /* Centre le texte */
+    align-items: center;
+    box-shadow: 0 0 5px #8cce35, 0 0 10px #8cce35, 0 0 15px #8cce35;
+}
+
+/* Description sous le header */
+.header-description {
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    padding: 0 15px;
+    margin-top: 10px;
+    margin: 0 auto; /* Centre le header horizontalement */
+    width: 100%; /* Réduit la largeur */
+    max-width: 600px;
+}
+
+/* Effet au survol */
+.player-button:hover {
+    transform: scale(1.05);
+    background-color: #8cce35;
+    color: #000;
+}
+
+/* Effet de clignotement pour le bouton sélectionné */
+.player-button.selected {
+    pointer-events: none; /* Désactiver les événements */
+    background-color: #8cce35;
+}
+
+/* Effet au survol */
+.player-button:hover {
+    background-color: #8cce35;
+    color: #000;
+}
+
+
+
+@keyframes blink {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+    25%, 75% {
+        opacity: 0.5;
+    }
+}
+
+/* Conteneur pour les boutons d'action */
+.action-buttons {
+    display: flex;
+    flex-direction: row; /* Assure que les boutons sont en ligne */
+    justify-content: space-between;
+    width: 100%; /* Réduit la largeur pour un look plus serré */
+    max-width: 600px;
+    padding: 10px 0;
+}
+
+
+/* Effet de survol pour "Sélectionner au hasard" */
+.random-button:hover {
+    transform: scale(1.1);
+}
+
+/* Style pour le bouton "Le mutant va paralyser" */
+.start-button {
+    align-items: center;
+    background-color: #8cce35;
+    color: #000;
+    border: 2px solid transparent;
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.3s, transform 0.3s;
+    animation: blink 6s infinite;
+    box-shadow: 0 0 15px #8cce35, 0 0 30px #8cce35, 0 0 45px #8cce35;
+    font-family: 'Tektur', sans-serif;
+    width: 100%; /* Réduit la largeur pour s'ajuster aux petits espaces */
+}
+
+/* Effet au survol pour "Le mutant va paralyser" */
+.start-button:hover {
+    transform: scale(1.1);
+}
+
+
+/* Media Query pour les petits écrans */
+@media (max-width: 600px) {
+    .header-container, .header-description, .button-container, .action-buttons {
+        width: 90%; /* Utilise plus de largeur sur les petits écrans */
+        max-width: none; /* Supprime la limitation de largeur */
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+
+    .turn-counter, .random-button, .start-button {
+        font-size: 14px;
+    }
+
+    .player-button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .action-buttons {
+        align-items: center; /* Centre les boutons */
+    }
+
+   .start-button {
+        width: 80%; /* Utilise plus de largeur sur les petits écrans */
+        margin-bottom: 10px;
+
+    }
+}

@@ -23,11 +23,41 @@ body, html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 80%; /* Réduit la largeur du header pour un effet plus compact */
+    width: 100%; /* Réduit la largeur du header pour un effet plus compact */
     max-width: 600px; /* Limite maximale pour éviter de trop élargir sur les écrans larges */
     padding: 10px;
     background-color: #000;
     margin: 0 auto; /* Centre le header horizontalement */
+}
+
+#statusMessage {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 20px;
+    color:#818181;
+    font-size: 22px;
+    margin-bottom: 35px;
+}
+
+/* Styles conditionnels */
+.status-paralyzed {
+    color:#5795e6;
+    display: inline-block; /* Pour s'assurer que l'animation s'applique correctement */
+    text-shadow: 0 0 10px #5795e6, 0 0 20px #5795e6, 0 0 30px #5795e6;
+    animation: paralysis 2s infinite; /* Animation en boucle */  
+}
+
+.status-mutated {
+    color:#7e4dda;
+    display: inline-block; /* Pour s'assurer que l'animation s'applique correctement */
+    animation: blink 6s infinite;
+    text-shadow: 0 0 20px #7e4dda, 0 0 40px #7e4dda, 0 0 60px #7e4dda;
+}
+
+.status-dead {
+    color:#818181;
+    display: inline-block; /* Pour s'assurer que l'animation s'applique correctement */
+    text-shadow: 0 0 10px #818181, 0 0 20px #818181, 0 0 30px #818181;
 }
 
 /* Titre au centre */
@@ -46,6 +76,9 @@ h1 {
     background-color: #222;
     border: 2px solid #8cce35;
     font-size: 16px;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    display: inline-flex; /* Garde le texte et le numéro sur une seule ligne */
+    align-items: center; /* Centre verticalement le contenu si besoin */
 }
 
 /* Bouton exit aligné à droite */
@@ -68,17 +101,10 @@ h1 {
     padding: 0 15px;
     margin-top: 10px;
     margin: 0 auto; /* Centre le header horizontalement */
-    width: 80%; /* Réduit la largeur */
+    width: 100%; /* Réduit la largeur */
     max-width: 600px;
 }
 
-.para-word {
-    color: #5795e6;
-    display: inline-block; /* Pour s'assurer que l'animation s'applique correctement */
-    animation: paralysis 2s infinite; /* Réutilise l'animation 'paralysis' */
-    color: 2px solid #5795e6; /* Optionnel : ajoute une bordure pour un effet visuel */
-    text-shadow: 0 0 10px #5795e6, 0 0 20px #5795e6, 0 0 30px #5795e6;
-}
 
 /* Styles des boutons joueurs */
 .button-container {
@@ -87,7 +113,7 @@ h1 {
     gap: 25px; /* Espacement réduit */
     justify-content: center;
     align-items: center;
-    width: 80%; /* Réduit la largeur pour un effet plus serré */
+    width: 100%; /* Réduit la largeur pour un effet plus serré */
     max-width: 600px;
     margin: 20px 0;
 }
@@ -96,6 +122,11 @@ h1 {
 .player-button.mut-light-effect {
     border: 5px solid #7e4dda;
     box-shadow: 0 0 20px #7e4dda, 0 0 40px #7e4dda, 0 0 60px #7e4dda;
+}
+
+.player-button.psy-light-effect {
+    border: 5px solid #4350ff;
+    box-shadow: 0 0 20px #4350ff, 0 0 40px #4350ff, 0 0 60px #4350ff;
 }
 
 .player-button.dead-light-effect {
@@ -118,7 +149,7 @@ h1 {
     font-size: 18px;
     text-align: center;
     transition: background 0.3s;
-    width: 90%; /* Élargi les boutons pour éviter les retours à la ligne */
+    width: 100%; /* Élargi les boutons pour éviter les retours à la ligne */
     white-space: nowrap; /* Empêche les retours à la ligne dans les boutons */
     margin: 3px;
     display: flex;
@@ -137,33 +168,9 @@ h1 {
 /* Effet de clignotement pour le bouton sélectionné */
 .player-button.selected {
     pointer-events: none; /* Désactiver les événements */
-    border: 5px solid #5795e6;
-    animation: paralysis 2s infinite; /* Animation en boucle */
-    box-shadow: 0 0 10px #5795e6, 0 0 20px #5795e6, 0 0 30px #5795e6;  
+    background-color: #8cce35;
 }
 
-@keyframes paralysis {
-    0% { transform: translateX(0);
-        opacity: 1; }
-    5% { transform: translateX(3px);
-        opacity: 0.6; }
-    10% { transform: translateX(-2px);
-        opacity: 1; }
-    15% { transform: translateX(1px);
-        opacity: 0.6; }
-    20% { transform: translateX(0); 
-        opacity: 0.6;}
-    25% { transform: translateX(3px);
-        opacity: 0.6; }
-    30% { transform: translateX(-2px);
-        opacity: 0.6; }
-    35% { transform: translateX(1px);
-        opacity: 0.6; }
-    40% { transform: translateX(0);
-        opacity: 0.6; }
-    100% { transform: translateX(0);
-        opacity: 0.6; }
-}
 
 
 /* Conteneur pour les boutons d'action */
@@ -191,7 +198,7 @@ h1 {
     animation: blink 6s infinite;
     box-shadow: 0 0 15px #8cce35, 0 0 30px #8cce35, 0 0 45px #8cce35;
     font-family: 'Tektur', sans-serif;
-    width: 50%; /* Réduit la largeur pour s'ajuster aux petits espaces */
+    width: 100%; /* Réduit la largeur pour s'ajuster aux petits espaces */
 }
 
 /* Effet au survol pour "Le mutant va paralyser" */
