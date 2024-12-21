@@ -23,7 +23,8 @@ skip();
 function updatestatusMessage() {
     const statusMessageDiv = document.getElementById('statusMessage');
     const indic = players.find(player => player.role === 'indic');
-    const selectedPlayer = players[selectedPlayerIndex];
+    const fana = players.find(player => player.role === 'fana')
+
 
     if (indic.status === 'para') {
         statusMessageDiv.innerHTML = `(L'indic est <span class="status-paralyzed">paralysé</span>.)`;
@@ -32,18 +33,11 @@ function updatestatusMessage() {
     } else if (indic.status === 'mort') {
         statusMessageDiv.innerHTML = `(L'indic est <span class="status-dead">mort</span>.)`;
     } else if (indic.status === 'sain') {
-        if (selectedPlayerIndex === null) {
-            statusMessageDiv.innerHTML = '(Sélectionnez un joueur)';
-        } else if (selectedPlayer) {
-            if (selectedPlayer.role === 'fana') {
-                statusMessageDiv.innerHTML = `(${selectedPlayer.name} est le <span class="status-fana">Fanatique</span>.)`;
-            }
-             else {
-                statusMessageDiv.innerHTML = `(${selectedPlayer.name} n'est pas le fanatique.)`;
-            }
+        statusMessageDiv.innerHTML = `Si la cible est <span class="status-fana"> ${fana.name} </span> ou son voisin: (Faire \"oui\") <br>
+        Si non: (Faire \"non\" de la tête) `;
         }
     }
-}
+
 
 // Fonction pour afficher la liste des boutons des joueurs
 function updatePlayerButtons() {
@@ -54,11 +48,6 @@ function updatePlayerButtons() {
         const button = document.createElement('button');
         button.classList.add('player-button');
         button.textContent = player.name;
-
-        // Ajout d'effet lumineux si sélectionné
-        if (selectedPlayerIndex === index) {
-            button.classList.add('selected');
-        }
 
         // Vérifier si le joueur est le psychologue ou un mutant et ajouter les classes
         if (player.role === 'fana') {
@@ -85,13 +74,11 @@ function updatePlayerButtons() {
 
         buttonContainer.appendChild(button);
     });
-
-    // Appel pour mettre à jour le message de statut à chaque fois que les boutons sont mis à jour
-    updatestatusMessage();
 }
 
 // Appel de la fonction pour afficher les boutons des joueurs
 updatePlayerButtons();
+updatestatusMessage();
 
 // Fonction pour enregistrer les joueurs dans le localStorage
 function savePlayersToLocalStorage() {
@@ -100,7 +87,12 @@ function savePlayersToLocalStorage() {
 
 // Bouton "next"
 document.getElementById('nextButton').addEventListener('click', () => {
+    
     const turn = localStorage.getItem('turn');
+    const indic = players.find(player => player.role === 'indic');
+    if (indic.status === 'sain' && selectedPlayerIndex === null ){
+        alert('Veuillez sélectionner un joueur à analyser.');
+    }
 
     if (selectedPlayerIndex !== null) {
         players[selectedPlayerIndex].trace += " I" + turn; // mettre a jour la trace

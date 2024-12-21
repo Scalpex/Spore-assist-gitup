@@ -5,8 +5,6 @@ let players = JSON.parse(localStorage.getItem('players')) || [];
 const turnDisplay = document.getElementById('turnDisplay');
 turnDisplay.textContent = localStorage.getItem('turn');
 
-// Filtrer les joueurs vivants
-const alivePlayers = players.filter(player => player.status !== 'mort');
 
 // Variables pour les sélections
 let selectedVoterIndex = null;
@@ -14,6 +12,7 @@ let selectedTargetIndex = null;
 
 // Afficher les joueurs dans les colonnes
 function displayPlayers() {
+    const alivePlayers = players.filter(player => player.status !== 'mort');
     const voterList = document.getElementById('voterList');
     const targetList = document.getElementById('targetList');
     const blankVoteButton = document.getElementById('blankVoteButton');
@@ -54,12 +53,14 @@ function displayPlayers() {
 
     // Compteur de votes restants
     updateRemainingCount();
+   
 }
 
 
 
 // Sélectionner un votant
 function selectVoter(index) {
+    const alivePlayers = players.filter(player => player.status !== 'mort');
     const turn = parseInt(localStorage.getItem('turn'), 10); // Assurez-vous que 'turn' est un nombre
     selectedVoterIndex = index;
     selectedTargetIndex = alivePlayers[index].voteTarget  || null;
@@ -77,6 +78,15 @@ function selectVoter(index) {
     // Vérification du joueur hôte
     if (player.genome === "hôte" && player.status === "mut" && player.trace && player.role === "Mutant" && player.trace.includes("S" + (turn - 1))) {
         alert("Attention ! Tu as le gène 'hôte' ! Le soin des médecins n'a eu aucun effet sur toi. tu est et tu resteras toujours un MUTANT quoi qu'il arrive");
+    }
+
+    if (player.role === "fana" && player.status !== "mut"){
+        kaboomButton.classList.remove('hidden');
+        kaboomButton.classList.add('kaboombutton-style'); // Ajout de la même classe que le bouton "Vote blanc"
+    } 
+    if (player.role !== "fana" || player.status === "mut"){
+        kaboomButton.classList.add('hidden');
+        kaboomButton.classList.remove('kaboombutton-style');
     }
 
     // Mettre à jour l'affichage des joueurs
@@ -102,6 +112,9 @@ document.getElementById('blankVoteButton').addEventListener('click', () => {
 
 // Enregistrer le vote
 document.getElementById('submitVoteButton').addEventListener('click', () => {
+    const alivePlayers = players.filter(player => player.status !== 'mort');
+    kaboomButton.classList.add('hidden');
+    kaboomButton.classList.remove('kaboombutton-style');
     if (selectedVoterIndex !== null && selectedTargetIndex !== null) {
         // Vérifier si le vote blanc est sélectionné
         if (selectedTargetIndex === -1) {
@@ -120,6 +133,40 @@ document.getElementById('submitVoteButton').addEventListener('click', () => {
         alert('Veuillez sélectionner un votant et une cible.');
     }
 });
+//effet kaboom
+document.getElementById('kaboomButton').addEventListener('click', () => {
+    const turn = localStorage.getItem('turn');
+    const alivePlayers = players.filter(player => player.status !== 'mort');
+    const selectedTarget = alivePlayers[selectedTargetIndex];
+    kaboomButton.classList.add('hidden');
+    kaboomButton.classList.remove('kaboombutton-style');
+    if (selectedTargetIndex === -1 || selectedTargetIndex === null ) {
+        alert('Veuillez sélectionner une cible à dégommer !');
+    }
+    else {
+        alivePlayers[selectedVoterIndex].status = 'mort';
+        alivePlayers[selectedVoterIndex].trace += " Tk" + turn;
+        alivePlayers[selectedTargetIndex].status = 'mort';
+        alivePlayers[selectedTargetIndex].trace += " Tk" + turn;
+        alivePlayers[selectedVoterIndex].voteTarget = null;
+        alivePlayers[selectedTargetIndex].voteTarget = null;
+        // Enregistrer les données dans le localStorage
+        localStorage.setItem('players', JSON.stringify(players));
+
+        
+        if (selectedTarget && selectedTarget.rank === "chef") {
+        window.location.href = 'leadKaboom.html';
+}
+
+
+        // Réinitialiser la sélection et mettre à jour l'affichage
+        resetSelection();
+        displayPlayers();
+        updateRemainingCount();
+    }});
+
+   
+
 
 // Réinitialiser les sélections
 function resetSelection() {
@@ -130,6 +177,7 @@ function resetSelection() {
 
 function countVotesForPlayers() {
     // Compter les votes pour chaque joueur
+    const alivePlayers = players.filter(player => player.status !== 'mort');
     alivePlayers.forEach(voter => {
         if (typeof voter.voteTarget === "number") {
             // Utiliser l'indice pour identifier le joueur cible dans alivePlayers
@@ -145,6 +193,7 @@ function countVotesForPlayers() {
 }
 // 2. Fonction pour compter et enregistrer le nombre de votes blancs dans le localStorage
 function countAndSaveBlankVotes() {
+    const alivePlayers = players.filter(player => player.status !== 'mort');
     // Compter le nombre de votes blancs (voteTarget est nul ou vide)
     const blankVotes = alivePlayers.filter(player => player.voteTarget === "blanc").length;
     
@@ -156,6 +205,7 @@ function countAndSaveBlankVotes() {
 
 // Mettre à jour le compteur de votes restants
 function updateRemainingCount() {
+    const alivePlayers = players.filter(player => player.status !== 'mort');
     const votesRemaining = alivePlayers.filter(player => player.voteTarget === null || player.voteTarget === "").length;
     document.getElementById('voteCounter').textContent = `Joueurs restants à voter : ${votesRemaining}`;
 
@@ -169,6 +219,7 @@ function updateRemainingCount() {
         showResultsButton.classList.add('hidden');
         showResultsButton.classList.remove('button-style');
     }
+   
 }
 
 // Rediriger vers "result.html" au clic du bouton (attendre que le bouton soit visible)
@@ -183,6 +234,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+
 // Afficher les boutons des joueurs au chargement de la page
 displayPlayers();
 
@@ -191,4 +244,3 @@ document.getElementById('exitButton').addEventListener('click', () => {
     localStorage.setItem('turn', '1');
     window.location.href = 'equipe.html';
 });
-

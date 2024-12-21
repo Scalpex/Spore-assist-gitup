@@ -68,10 +68,6 @@ font-size: 20px;
     font-family: 'Tektur', sans-serif; /* Police Tektur pour le bouton */
 }
 
-/* Effet au survol */
-.start-button:hover {
-    transform: scale(1.1);
-}
 
 /* Animation de clignotement */
 @keyframes blink {
@@ -160,11 +156,6 @@ h1 {
     margin-left: 25px;
 }
 
-/* Effet au survol du bouton d'ajout */
-#addPlayerButton:hover {
-    background-color: #7bbd2b; /* Variation plus foncée */
-    transform: scale(1.05);
-}
 
 /* Style de la corbeille */
 .delete-icon {
@@ -173,10 +164,6 @@ h1 {
     transition: color 0.3s;
 }
 
-/* Effet au survol de l'icône de suppression */
-.delete-icon:hover {
-    color: #cc0000; /* Variation plus foncée du rouge */
-}
 
 /* Compteur de joueurs */
 .counter {
@@ -200,12 +187,6 @@ h1 {
     box-shadow: 0 0 15px #8cce35, 0 0 30px #8cce35, 0 0 45px #8cce35; /* Bord lumineux */
 }
 
-/* Effet au survol du bouton Briefing */
-.briefing-button:hover {
-    background-color: #7bbd2b; /* Variation plus foncée */
-    transform: scale(1.05);
-}
-/* Page Brifing */
 
 /* Style de la page Briefing */
 .briefing-page {
@@ -233,10 +214,6 @@ h1 {
     align-items: center;
 }
 
-/* Effet au survol du bouton */
-.play-button:hover {
-    transform: scale(1.2); /* Légère augmentation de la taille au survol */
-}
 
 /* Header et positionnement du cadre "Jour" */
 header {
@@ -297,10 +274,6 @@ header {
     margin: 20px auto; /* Centrer le bouton horizontalement */
 }
 
-/* Effet au survol */
-.leader-button:hover {
-    transform: scale(1.1);
-}
 
 /* Animation de clignotement */
 @keyframes blink {
@@ -405,10 +378,6 @@ body {
     align-items: center;
 }
 
-.player-item:hover {
-    background-color: #8cce35;
-    color: #000;
-}
 
 /* Style pour le bouton "Valider et démarrer la nuit" */
 .validate-button {
@@ -428,10 +397,6 @@ body {
     margin: 0 auto; /* Centrer le bouton horizontalement */
 }
 
-/* Effet au survol */
-.validate-button:hover {
-    transform: scale(1.1);
-}
 
 /* Animation de clignotement */
 @keyframes blink {

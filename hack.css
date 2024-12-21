@@ -16,6 +16,7 @@ body, html {
     justify-content: flex-start;
     align-items: center;
     font-family: 'Tektur', sans-serif;
+    
 }
 
 /* Style du header */
@@ -67,7 +68,7 @@ h1 {
 /* Description sous le header */
 .header-description {
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
     padding: 0 15px;
     margin-top: 10px;
@@ -138,12 +139,23 @@ h1 {
     text-align: center;
     background-color: #000; /* Couleur de fond pour le statut */
     color: #818181; /* Couleur de texte */
-    padding: 10;
-    font-size: 22px;
+    padding: 10px;
+    font-size: 18px;
     margin-top: 20px;
     border-radius: 4px;
     margin-bottom: 20px;
 }
+
+#concluMessage {
+    color: #fff;
+    background-color: #000;
+    font-size: 18px;
+    text-align: center;
+    padding: 0 15px;
+    margin-top: 10px;
+    margin: 0 auto; /* Centre le header horizontalement */
+    width: 100%; /* Réduit la largeur */
+    max-width: 600px;}
 
 
 .action-selection {
@@ -151,7 +163,7 @@ h1 {
     font-size : 16px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
     background-color: #000;
     color: #000;
     animation: blink 6s infinite;
@@ -159,7 +171,7 @@ h1 {
 
 .action-button {
     font-family: 'Tektur', sans-serif;
-    padding: 15px 30px;
+    padding: 15px 25px;
     font-size: 18px;
     border-radius: 5px;
     background-color: #000;
@@ -173,17 +185,17 @@ h1 {
 /* Couleurs spécifiques pour chaque bouton */
 .info {
     border: 5px solid #e27e2c; /* Jaune pour l'informaticien */
-    box-shadow: 0 0 15px #e27e2c, 0 0 30px #e27e2c, 0 0 45px #e27e2c
+    box-shadow: 0 0 15px #e27e2c, 0 0 30px #e27e2c, 0 0 45px #e27e2c;  
 }
 
 .psy {
     border: 5px solid #4350ff; /* Bleu foncé pour le psychologue */
-    box-shadow: 0 0 15px #4350ff, 0 0 30px #4350ff, 0 0 45px #4350ff
+    box-shadow: 0 0 15px #4350ff, 0 0 30px #4350ff, 0 0 45px #4350ff;
 }
 
 .gene {
     border: 5px solid #008120; /* Vert foncé pour le généticien */
-    box-shadow: 0 0 15px #008120, 0 0 30px #008120, 0 0 45px #008120
+    box-shadow: 0 0 15px #008120, 0 0 30px #008120, 0 0 45px #008120; 
 }
 
 /* Styles appliqués lors de la sélection d'un bouton */
@@ -196,12 +208,6 @@ h1 {
     color: #000; 
 }
 
-/* Effet d'agrandissement au survol */
-.action-button:hover {
-    transform: scale(1.05);
-    background-color: #8cce35;
-    color: #000;
-}
 
 @keyframes blink {
     0%,35%, 85%, 100% {
@@ -242,7 +248,7 @@ h1 {
     align-items: center;
     display: flex;
     width: 100%; /* Réduit la largeur pour un look plus serré */
-    max-width: 600px;
+    max-width: 500px;
     padding: 10px 0;
 }
 
@@ -263,10 +269,6 @@ h1 {
     width: 100%; /* Réduit la largeur pour s'ajuster aux petits espaces */
 }
 
-/* Effet au survol pour "Le mutant va paralyser" */
-.start-button:hover {
-    transform: scale(1.1);
-}
 
 
 /* Media Query pour les petits écrans */

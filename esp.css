@@ -101,7 +101,7 @@ h1 {
     padding: 0 15px;
     margin-top: 10px;
     margin: 0 auto; /* Centre le header horizontalement */
-    width: 80%; /* Réduit la largeur */
+    width: 100%; /* Réduit la largeur */
     max-width: 600px;
 }
 
@@ -154,12 +154,6 @@ h1 {
     box-shadow: 0 0 5px #8cce35, 0 0 10px #8cce35, 0 0 15px #8cce35;
 }
 
-/* Effet au survol */
-.player-button:hover {
-    transform: scale(1.05);
-    background-color: #8cce35;
-    color: #000;
-}
 
 /* Effet de clignotement pour le bouton sélectionné */
 .player-button.selected {
@@ -210,11 +204,6 @@ h1 {
     box-shadow: 0 0 15px #8cce35, 0 0 30px #8cce35, 0 0 45px #8cce35;
     font-family: 'Tektur', sans-serif;
     width: 50%; /* Réduit la largeur pour s'ajuster aux petits espaces */
-}
-
-/* Effet au survol pour "Le mutant va paralyser" */
-.start-button:hover {
-    transform: scale(1.1);
 }
 
 /* Animation de clignotement */

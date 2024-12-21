@@ -9,16 +9,22 @@ let players = JSON.parse(localStorage.getItem('players')) || [];
 const buttonContainer = document.querySelector('.button-container');
 let selectedPlayerIndex = null;
 
-function skip(){
-    const turn = localStorage.getItem('turn');
+function skip() {
+    let turn = parseInt(localStorage.getItem('turn'), 10); // Récupérer `turn` comme un nombre
     const esp = players.find(player => player.role === 'esp');
 
-    if (turn !== 1 && !esp){
-        window.location.href = "bilan.html"
+    if (turn !== 1 && !esp) {
+        nextTurn();
+        window.location.href = "bilan.html";
     }
 }
 skip();
 
+function nextTurn() {
+    let turn = parseInt(localStorage.getItem('turn'), 10); // Récupérer `turn` comme un nombre
+    turn += 1; // Incrémenter
+    localStorage.setItem('turn', turn.toString()); // Enregistrer la nouvelle valeur dans localStorage
+}
 updatePlayerButtons();
 
 // Fonction pour afficher la phrase conditionnelle dans le statusMessage
@@ -67,11 +73,6 @@ function updatestatusMessage() {
                 statusMessageDiv.innerHTML += '<span class="yes-effect">le généticien</span>, '}
             else {statusMessageDiv.innerHTML += '<span class="no-effect">le généticien</span>, '; 
             }
-            if (selectedPlayer.trace.includes("I" + turn)){
-                statusMessageDiv.innerHTML += '<span class="yes-effect">l\'indic</span>, '}
-            else {statusMessageDiv.innerHTML += '<span class="no-effect">l\'indic</span>, '; 
-            }
-
             if (selectedPlayer.trace.includes("J" + turn)){
                 statusMessageDiv.innerHTML += '<span class="yes-effect">le journaliste</span>.)'}
             else {statusMessageDiv.innerHTML += '<span class="no-effect">le journaliste</span>.)'; 
@@ -134,8 +135,12 @@ function savePlayersToLocalStorage() {
 // Bouton "next"
 document.getElementById('nextButton').addEventListener('click', () => {
     let turn = parseInt(localStorage.getItem('turn'), 10); // Récupérer 'turn' et le convertir en nombre
+    const esp = players.find(player => player.role === 'esp');
+    if (esp.status === 'sain' && selectedPlayerIndex === null ){
+        alert('Veuillez sélectionner un joueur à analyser.');
+    }
 
-    if (selectedPlayerIndex !== null) {
+    else if (selectedPlayerIndex !== null) {
         // Mettre à jour la trace du joueur sélectionné avec l'ancienne valeur de 'turn'
         players[selectedPlayerIndex].trace += " E" + turn;
         

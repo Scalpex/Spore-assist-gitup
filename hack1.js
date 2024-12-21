@@ -30,27 +30,12 @@ function updatestatusMessage() {
     // Afficher le statut du hacker
     if (hack.status === 'para') {
         statusMessageDiv.innerHTML = `Le hacker est <span class="status-paralyzed">paralysé</span>.`;
-        concluMessage.innerHTML = `<I>(Bien tout lire)</I><br>\
-         Et je lui dévoile le Nombre de mutant si hack=>info <br>\
-        ou bien la cible si hack=>psy/génét<br>\
-        et si cette cible est donc: mutante ou non, pour le Psy.<br>\
-        ou bien: hôte, réistante ou neutre pour le Genetic.<br><br>`;
         hideActionButtons(); // Cacher les boutons d'action si le hacker n'est pas "sain"
     } else if (hack.status === 'mut') {
         statusMessageDiv.innerHTML = `Le hacker est <span class="status-mutated">muté</span>.`;
-        concluMessage.innerHTML = `<I>(Bien tout lire)</I><br>\
-        Et je lui dévoile le Nombre de mutant si hack=>info <br>\
-       ou bien la cible si hack=>psy/génét<br>\
-       et si cette cible est donc: mutante ou non, pour le Psy.<br>\
-       ou bien: hôte, réistante ou neutre pour le Genetic.<br><br>`;
         hideActionButtons();
     } else if (hack.status === 'mort') {
         statusMessageDiv.innerHTML = `Le hacker est <span class="status-dead">mort</span>.`;
-        concluMessage.innerHTML = `<I>(Bien tout lire)</I><br>\
-         Et je lui dévoile le Nombre de mutant si hack=>info <br>\
-        ou bien la cible si hack=>psy/génét<br>\
-        et si cette cible est donc: mutante ou non, pour le Psy.<br>\
-        ou bien: hôte, réistante ou neutre pour le Genetic.<br><br>`;
         hideActionButtons();
     } else if (hack.status === 'sain') {
         showActionButtons(); // Afficher les boutons d'action si le hacker est "sain"
@@ -105,134 +90,45 @@ function updatresultMessage() {
     const psyked = players.filter(player => player.trace.includes("Y" + turn));
     const psykedName = psyked.length > 0 ? psyked[0].name : "Personne";
     const psykedResult = psyked.length > 0 ? psyked[0].status : null;
+    
     const gened = players.filter(player => player.trace.includes("G" + turn));
     const genedName = gened.length > 0 ? gened[0].name : "Personne";
     const genedResult = gened.length > 0 ? gened[0].genome : null;
-    const mutantsCount = players.filter(player => player.status === 'mut').length;
-    const inf = players.find(player => player.role === 'info');
-    const psy = players.find(player => player.role === 'psy');
-    const gene = players.find(player => player.role === 'gene');
 
     
 
     if (actionSelected === 'info') {
+        const inf = players.find(player => player.role === 'info');
         if (inf.status === 'mort' || inf.status === 'mut' || inf.status === 'para') {
             resultMessage.innerHTML = `(L'informaticien est innactif cette nuit.)`;
-            concluMessage.innerHTML = `<I>(Bien tout lire)</I><br>\
-         Et je lui dévoile le Nombre de mutant si hack=>info <br>\
-        ou bien la cible si hack=>psy/génét<br>\
-        et si cette cible est donc: mutante ou non, pour le Psy.<br>\
-        ou bien: hôte, réistante ou neutre pour le Genetic.<br><br>`;
         } else {
+        const mutantsCount = players.filter(player => player.status === 'mut').length;
         resultMessage.innerHTML = `(Il y a ${mutantsCount} mutant(s) à bord)`;
         }
     } else if (actionSelected === 'psy') {
+        const psy = players.find(player => player.role === 'psy');
         if (psy.status === 'mort' || psy.status === 'mut' || psy.status === 'para') {
             resultMessage.innerHTML = `(Le Psy est innactif cette nuit.)`;
-            concluMessage.innerHTML = `<I>(Bien tout lire)</I><br>\
-            Et je lui dévoile le Nombre de mutant si hack=>info <br>\
-           ou bien la cible si hack=>psy/génét<br>\
-           et si cette cible est donc: mutante ou non, pour le Psy.<br>\
-           ou bien: hôte, réistante ou neutre pour le Genetic.<br><br>`;
         } else {
             const inspectionResult = psykedResult === 'mut' ? 'mutant' : (psykedResult === 'mort' ? 'mort' : 'sain');
             resultMessage.innerHTML = `(le Psy a inspecté ${psykedName}. Résultat : ${inspectionResult}.)`;
         }
     } else if (actionSelected === 'gene') {
+        const gene = players.find(player => player.role === 'gene');
         if (gene.status === 'mort' || gene.status === 'mut' || gene.status === 'para') {
             resultMessage.innerHTML = `(Le Génétic. est innactif cette nuit.)`;
-            concluMessage.innerHTML = `<I>(Bien tout lire)</I><br>\
-            Et je lui dévoile le Nombre de mutant si hack=>info <br>\
-           ou bien la cible si hack=>psy/génét<br>\
-           et si cette cible est donc: mutante ou non, pour le Psy.<br>\
-           ou bien: hôte, réistante ou neutre pour le Genetic.<br><br>`;
         } else {
             const genomeResult = genedResult === 'hôte' ? 'hôte' : (genedResult === 'résist' ? 'résistant' : 'neutre');
             resultMessage.innerHTML = `(le Génétic. a inspecté ${genedName}. Résultat : ${genomeResult}.)`;
         }
-    }}
-
-
-
-
-function updatconcluMessage() {
-    const concluMessage = document.getElementById('concluMessage');
-    const turn = localStorage.getItem('turn'); // Récupérer la valeur de 'turn'
-    const mutantsCount = players.filter(player => player.status === 'mut').length;
-    const psyked = players.filter(player => player.trace.includes("Y" + turn));
-    const psykedName = psyked.length > 0 ? psyked[0].name : "Personne";
-    const psykedResult = psyked.length > 0 ? psyked[0].status : null;
-    const gened = players.filter(player => player.trace.includes("G" + turn));
-    const genedName = gened.length > 0 ? gened[0].name : "Personne";
-    const genedResult = gened.length > 0 ? gened[0].genome : null;
-    const inspectionResult = psykedResult === 'mut' ? 'mutant' : (psykedResult === 'mort' ? 'mort' : 'sain');
-    const genomeResult = genedResult === 'hôte' ? 'hôte' : (genedResult === 'résist' ? 'résistant' : 'neutre');
-    const inf = players.find(player => player.role === 'info');
-    const psy = players.find(player => player.role === 'psy');
-    const gene = players.find(player => player.role === 'gene');
-    
-
-
-    if (actionSelected === 'info' && inf.status === 'sain') {
-        concluMessage.innerHTML = `<I>(Bien tout lire)</I><br>\
-         Et je lui dévoile le <B>Nombre</B> de mutant si hack=>info <br>\
-         <I>(montrer sur ses doigts) :</I> <B> ${mutantsCount} Mutant(s)</B><br>\
-        ou bien la cible si hack=>psy/génét<br>\
-        et si cette cible est donc: mutante ou non, pour le Psy.<br>\
-        ou bien: hôte, réistante ou neutre pour le Genetic.<br><br>`
     }
-
-    if (actionSelected === 'psy' && inspectionResult === 'mutant' && psy.status === 'sain') {
-        concluMessage.innerHTML = `<I>(Bien tout lire)</I><br>\
-        Et je lui dévoile le nombre de mutant si hack=>info <br>\
-        ou bien la cible si hack=>psy/génét : <B>${psykedName}</B> <br>\
-        et si cette cible est donc: <B>Mutante</B> ou non, pour le Psy.<I><B>(Oui !)</B></I><br>\
-        ou bien: hôte, réistante ou neutre pour le Genetic.\
-        <br><br>`
-    }
-
-    if (actionSelected === 'psy' && inspectionResult !== 'mutant' && psy.status === 'sain') {
-        concluMessage.innerHTML = `<I>(Bien tout lire)</I><br>\
-        Et je lui dévoile le nombre de mutant si hack=>info <br>\
-        ou bien la cible si hack=>psy/génét : <B>${psykedName}</B> <br>\
-        et si cette cible est donc: mutante ou <B>Non</B>, pour le Psy.<I><B>(Non !)</B></I><br>\
-        ou bien: hôte, réistant ou neutre pour le Genetic.\
-        <br><br>`
-    }
-
-    if (actionSelected === 'gene' && genomeResult === 'résistant' && gene.status === 'sain') {
-        concluMessage.innerHTML = `<I>(Bien tout lire)</I><br>\
-        Et je lui dévoile le nombre de mutant si hack=>info <br>\
-        ou bien la cible si hack=>psy/génét : <B>${genedName}</B><br>\
-        et si cette cible est donc: mutante ou non, pour le Psy.<br>\
-        ou bien: hôte <I>(Non)</I>, <B>Réistante </B><I>(Oui !)</I> ou neutre <I>(Non)</I> pour le Genetic.\
-        <br><br>`
-    }
-
-    if (actionSelected === 'gene' && genomeResult === 'neutre' && gene.status === 'sain') {
-        concluMessage.innerHTML = `<I>(Bien tout lire)</I><br>\
-        Et je lui dévoile le nombre de mutantssi hack=>info <br>\
-        ou bien la cible si hack=>psy/génét : <B>${genedName}</B><br>\
-        et si cette cible est donc: mutante ou non, pour le Psy.<br>\
-        ou bien: hôte <I>(Non)</I>, réistante <I>(Non)</I> ou <B>Neutre</B> <I>(Oui !)</I> pour le Genetic.\
-        <br><br>`
-    }
-
-    if (actionSelected === 'gene' && genomeResult === 'hôte' && gene.status === 'sain') {
-        concluMessage.innerHTML = `<I>(Bien tout lire)</I><br>\
-        Et je lui dévoile le nombre de mutant si hack=>info <br>\
-        ou bien la cible si hack=>psy/génét : <B>${genedName}</B><br>\
-        et si cette cible est donc: mutante ou non, pour le Psy.<br>\
-        ou bien: <B>Hôte </B><I>(Oui !)</I>, réistante <I>(Non)</I> ou neutre <I>(Non)</I> pour le Genetic.\
-        <br><br>`
-    }
-
 }
-
-     
 
 // Appeler cette fonction pour charger le statut initial du hacker
 updatestatusMessage();
+
+// Sélection des boutons d'action
+
 
 // Gestionnaire d'événements pour chaque bouton d'action
 infoButton.addEventListener('click', () => {
@@ -241,7 +137,6 @@ infoButton.addEventListener('click', () => {
     psyButton.classList.remove('selected');
     geneButton.classList.remove('selected');
     updatresultMessage();
-    updatconcluMessage();
 });
 
 psyButton.addEventListener('click', () => {
@@ -250,7 +145,6 @@ psyButton.addEventListener('click', () => {
     infoButton.classList.remove('selected');
     geneButton.classList.remove('selected');
     updatresultMessage();
-    updatconcluMessage();
 });
 
 geneButton.addEventListener('click', () => {
@@ -259,7 +153,6 @@ geneButton.addEventListener('click', () => {
     infoButton.classList.remove('selected');
     psyButton.classList.remove('selected');
     updatresultMessage();
-    updatconcluMessage();
 });
  
 
@@ -268,12 +161,6 @@ document.getElementById('nextButton').addEventListener('click', () => {
     const psy = players.find(player=> player.role === 'psy');
     const gene = players.find(player=> player.role === 'gene');
     const turn = localStorage.getItem('turn');
-    const hack = players.find(player => player.role === 'hack');
-   
-    if (hack.status === 'sain' && actionSelected === null){
-        alert('Veuillez sélectionner un rôle à hacker.');
-    }
-    else {
    
     if (actionSelected !== null){
         if (actionSelected === 'info'){
@@ -294,7 +181,7 @@ document.getElementById('nextButton').addEventListener('click', () => {
     } else {
         window.location.href = "indic.html";
         }
-    }});
+    });
     
 
 
@@ -303,4 +190,3 @@ document.getElementById('exitButton').addEventListener('click', () => {
     localStorage.setItem('turn', '1');
     window.location.href = 'equipe.html';
 });
-

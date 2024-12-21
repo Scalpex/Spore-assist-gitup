@@ -65,10 +65,6 @@ function updatestatusMessage() {
                 statusMessageDiv.innerHTML += '<span class="yes-effect">le généticien</span>, '}
             else {statusMessageDiv.innerHTML += '<span class="no-effect">le généticien</span>, '; 
             }
-            if (selectedPlayer.trace.includes("I" + (turn-1))){
-                statusMessageDiv.innerHTML += '<span class="yes-effect">l\'indic</span>, '}
-            else {statusMessageDiv.innerHTML += '<span class="no-effect">l\'indic</span>, '; 
-            }
 
             if (selectedPlayer.trace.includes("E" + (turn-1))){
                 statusMessageDiv.innerHTML += '<span class="yes-effect">l\'espion</span>.)'}
@@ -130,6 +126,11 @@ function savePlayersToLocalStorage() {
 // Bouton "next"
 document.getElementById('nextButton').addEventListener('click', () => {
     const turn = localStorage.getItem('turn');
+    const journ = players.find(player => player.role === 'journ');
+    if (journ.status === 'sain' && selectedPlayerIndex === null ){
+        alert('Veuillez sélectionner un joueur à analyser.');
+    }
+    else {
 
     if (selectedPlayerIndex !== null) {
         players[selectedPlayerIndex].trace += " J" + turn; // mettre a jour la trace
@@ -142,7 +143,7 @@ document.getElementById('nextButton').addEventListener('click', () => {
     } else {
         window.location.href = "esp.html";
     }
-});
+}});
 
 // Bouton de sortie pour réinitialiser "turn" et retourner à la page équipe
 document.getElementById('exitButton').addEventListener('click', () => {

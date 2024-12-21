@@ -156,12 +156,6 @@ h1 {
     max-width: 600px;
 }
 
-/* Effet au survol */
-.player-button:hover {
-    transform: scale(1.05);
-    background-color: #8cce35;
-    color: #000;
-}
 
 /* Effet de clignotement pour le bouton sélectionné */
 .player-button.selected {
@@ -192,11 +186,6 @@ h1 {
 }
 
 
-/* Effet au survol */
-.player-button:hover {
-    background-color: #8cce35;
-    color: #000;
-}
 
 @keyframes blink {
     0%, 50%, 100% {
@@ -240,10 +229,6 @@ font-size: 22px;
     width: 100%; /* Réduit la largeur pour s'ajuster aux petits espaces */
 }
 
-/* Effet au survol pour "Le mutant va paralyser" */
-.start-button:hover {
-    transform: scale(1.1);
-}
 
 .vote-count {
     color: #8cce35;

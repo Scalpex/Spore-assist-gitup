@@ -88,28 +88,39 @@ killButton.addEventListener('click', () => {
 
 // Bouton "Les mutants referment leurs yeux"
 document.getElementById('at_med-Button').addEventListener('click', () => {
-    if (selectedPlayerIndex !== null && actionSelected) {
+
+    
+    if (selectedPlayerIndex === null || !actionSelected) {
+        
+        alert("Sélectionez un joueur et une action")}
+            
+
+    else if (selectedPlayerIndex !== null && actionSelected) {
         if (actionSelected === 'contaminate') {
             players[selectedPlayerIndex].trace += " M" + localStorage.getItem('turn'); // mettre a jour la trace
             if (players[selectedPlayerIndex].genome !== "résist") {players[selectedPlayerIndex].status = "mut"}; // Attribuer statut "mut"
         }
 
-        } else if (actionSelected === 'kill') {
+         else if (actionSelected === 'kill') {
             players[selectedPlayerIndex].status = "mort"; // Attribuer statut "mort"
             players[selectedPlayerIndex].trace += " T" + localStorage.getItem('turn'); // mettre a jour la trace
-        }
-        savePlayersToLocalStorage();
-        updatePlayerButtons(); // Mise à jour des boutons après changement de statut
+        }}
+    savePlayersToLocalStorage();
+    updatePlayerButtons(); // Mise à jour des boutons après changement de statut
 
-        const turn = localStorage.getItem('turn');
+    const turn = localStorage.getItem('turn');
 
-        if (turn === "1") {
+    if (turn === "1" && (selectedPlayerIndex !== null && actionSelected)) {
             window.location.href = "at_med.html"; // Redirection vers la page "at_mut"
-        } else {
-            if (players[selectedPlayerIndex].genome === "résist" && actionSelected === 'contaminate'){
-                alert(" Ne pas contaminer " + players[selectedPlayerIndex].name +  " car il est hôte.");}
+        }
+    else if (selectedPlayerIndex !== null && actionSelected)
+        {
+        if (players[selectedPlayerIndex].genome === "résist" && actionSelected === 'contaminate'){
+
+            alert(" Ne pas contaminer " + players[selectedPlayerIndex].name +  " car il est hôte.");
+        }
             
-            window.location.href = "medsoin.html"; // Redirection vers la page "para"
+        window.location.href = "medsoin.html"; // Redirection vers la page "para"
         }
     });
 

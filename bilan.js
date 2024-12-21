@@ -46,8 +46,6 @@ function updatechefStatusMessage() {
 }
 updatechefStatusMessage();
      
-   
-// Muté, Soigné, Inspecté par le Psy, par le Généticien, par l'esp, par l'espion hacké,  
 
 // Fonction pour afficher la liste des boutons des joueurs
 function updatePlayerButtons() {

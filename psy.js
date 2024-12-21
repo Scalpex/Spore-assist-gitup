@@ -89,6 +89,11 @@ function savePlayersToLocalStorage() {
 // Bouton "next"
 document.getElementById('nextButton').addEventListener('click', () => {
     const turn = localStorage.getItem('turn');
+    const psy = players.find(player => player.role === 'psy');
+    if (psy.status === 'sain' && selectedPlayerIndex === null ){
+        alert('Veuillez sélectionner un joueur à analyser.');
+    }
+    else {
 
     if (selectedPlayerIndex !== null) {
         players[selectedPlayerIndex].trace += " Y" + turn; // mettre a jour la trace
@@ -101,7 +106,7 @@ document.getElementById('nextButton').addEventListener('click', () => {
     } else {
         window.location.href = "genet.html";
     }
-});
+}});
 
 // Bouton de sortie pour réinitialiser "turn" et retourner à la page équipe
 document.getElementById('exitButton').addEventListener('click', () => {

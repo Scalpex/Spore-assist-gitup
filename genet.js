@@ -96,6 +96,11 @@ function savePlayersToLocalStorage() {
 // Bouton "next"
 document.getElementById('nextButton').addEventListener('click', () => {
     const turn = localStorage.getItem('turn');
+    const gene = players.find(player => player.role === 'gene');
+    if (gene.status === 'sain' && selectedPlayerIndex === null ){
+        alert('Veuillez sélectionner un joueur à analyser.');
+    }
+    else {
 
     if (selectedPlayerIndex !== null) {
         players[selectedPlayerIndex].trace += " G" + turn; // mettre a jour la trace
@@ -108,7 +113,9 @@ document.getElementById('nextButton').addEventListener('click', () => {
     } else {
         window.location.href = "hack.html";
     }
-});
+}});
+
+
 
 // Bouton de sortie pour réinitialiser "turn" et retourner à la page équipe
 document.getElementById('exitButton').addEventListener('click', () => {
