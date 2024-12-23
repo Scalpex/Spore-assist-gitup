@@ -87,18 +87,8 @@ function savePlayersToLocalStorage() {
 
 // Bouton "next"
 document.getElementById('nextButton').addEventListener('click', () => {
-    
+
     const turn = localStorage.getItem('turn');
-    const indic = players.find(player => player.role === 'indic');
-    if (indic.status === 'sain' && selectedPlayerIndex === null ){
-        alert('Veuillez sélectionner un joueur à analyser.');
-    }
-
-    if (selectedPlayerIndex !== null) {
-        players[selectedPlayerIndex].trace += " I" + turn; // mettre a jour la trace
-        savePlayersToLocalStorage();
-    }
-
     // Redirection selon le tour
     if (turn === "1") {
         window.location.href = "at_journ.html";

@@ -103,8 +103,6 @@ function updateDisplay() {
 
 updateDisplay();
 
-
-
 // Fonction pour enregistrer les joueurs dans le localStorage
 function savePlayersToLocalStorage() {
     localStorage.setItem('players', JSON.stringify(players));}

@@ -52,6 +52,8 @@ function savePlayersToLocalStorage() {
 
 // Bouton "Le mutant va paralyser"
 document.getElementById("validateNightButton").addEventListener('click', () => {
+    const chef = players.find(player => player.rank === 'chef')
+    if (chef){chef.rank ="";}
     if (selectedPlayerIndex !== null) {
         players[selectedPlayerIndex].rank = "chef"; 
         savePlayersToLocalStorage();

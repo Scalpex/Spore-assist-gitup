@@ -68,7 +68,7 @@ h1 {
 /* Description sous le header */
 .header-description {
     color: #fff;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     padding: 0 15px;
     margin-top: 10px;
@@ -149,7 +149,7 @@ h1 {
 #concluMessage {
     color: #fff;
     background-color: #000;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     padding: 0 15px;
     margin-top: 10px;

@@ -194,7 +194,7 @@ document.getElementById('at_info-Button').addEventListener('click', () => {
     if (turn === "1") {
         const mutResist = players.find(player => (player.trace.includes("M" + 1)));
 
-        if(mutResist.genome === 'résist'){
+        if(mutResist && mutResist.genome === 'résist'){
             alert("Soigner également " + mutResist.name +  " car il est résistant");}
         window.location.href = "at_info.html";
             } 
@@ -219,3 +219,4 @@ updatePlayerButtons();
 updateActionButtons();
 
 }
+mutResist

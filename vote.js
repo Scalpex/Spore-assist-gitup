@@ -138,6 +138,7 @@ document.getElementById('kaboomButton').addEventListener('click', () => {
     const turn = localStorage.getItem('turn');
     const alivePlayers = players.filter(player => player.status !== 'mort');
     const selectedTarget = alivePlayers[selectedTargetIndex];
+    const selectedVoter = alivePlayers[selectedVoterIndex];
     kaboomButton.classList.add('hidden');
     kaboomButton.classList.remove('kaboombutton-style');
     if (selectedTargetIndex === -1 || selectedTargetIndex === null ) {
@@ -154,7 +155,7 @@ document.getElementById('kaboomButton').addEventListener('click', () => {
         localStorage.setItem('players', JSON.stringify(players));
 
         
-        if (selectedTarget && selectedTarget.rank === "chef") {
+        if ((selectedTarget && selectedTarget.rank === "chef")||(selectedVoter && selectedVoter.rank)) {
         window.location.href = 'leadKaboom.html';
 }
 

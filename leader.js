@@ -2,6 +2,8 @@ const turn = parseInt(localStorage.getItem('turn'), 10);
 let players = JSON.parse(localStorage.getItem('players')) || [];
 const mut = players.find(player => player.status === 'mut');
 const checkDoc = players.filter(player => player.role === 'medecin' && (player.status === 'mort' || player.status === 'mut')).length;
+const chef = players.find(player => player.rank === 'chef')
+if (chef){chef.rank ="";}
 
 if (turn !== 1 && (checkDoc === 2 || !mut)){window.location.href = "fin.html";}
 
