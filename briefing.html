@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briefing</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="briefing.js"></script> <!-- JavaScript pour gérer l'audio -->
+</head>
+<body class="briefing-page">
+    <header>
+        <!-- Cadre affichant le "Jour" déplacé dans le header -->
+        <div class="turn-box">
+            <span>Jour :</span>
+            <span id="turnDisplay">1</span> <!-- Valeur par défaut si localStorage n'est pas défini -->
+        </div>
+        <h1 class="title">Briefing</h1>
+
+        <!-- Bouton "Play" ajouté -->
+        <button class="play-button" id="playButton">▶</button>
+    </header>
+    
+    <div class="content">
+        <!-- Texte d'introduction -->
+        <div class="intro-text">
+            <div id="typewriter"></div>
+            
+        </div>
+
+        <!-- Bouton pour aller à la page de sélection du ⭐leader -->
+        <button id="leaderButton" class="leader-button">Élection de votre ⭐Leader⭐</button>
+    </div>
+
+    <!-- Élément audio caché pour le fichier Briefing -->
+    <audio id="briefing" src="./Briefing.mp3"></audio>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formez votre équipage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="equip-page">
+    <div class="container">
+        <h1>Formez votre équipage</h1>
+        <div class="form-container">
+            <input type="text" id="playerName" placeholder="Entrez le prénom du joueur" />
+            <button id="addPlayerButton">Ajouter</button>
+        </div>
+        <ul id="playerList" class="player-list"></ul>
+        <div class="counter">Nombre de joueurs: <span id="playerCount">0</span></div>
+        
+        <!-- Bouton Briefing -->
+        <button id="briefingButton" class="briefing-button">Briefing</button>
+    </div>
+
+    <script src="equipe.js"></script>
+</body>
+</html>

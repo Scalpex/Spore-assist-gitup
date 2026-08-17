@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribution du rôle de Mutant</title>
+    <link rel="stylesheet" href="at_mut.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="turn-counter">Nuit : <span id="turnDisplay"></span></div>
+            <h1>Attribution du rôle de <strong>Mutant</strong></h1>
+            <button id="exitButton" class="exit-button">
+                <img src="exit.png" alt="Exit" />
+            </button>
+        </div>
+        <p class="header-description">
+            Ce mutant est "l'alpha" et n'est pas soignable par les médecins.<br><br>
+            
+            Chaque nuit, les mutants paralysent un joueur et en contaminent ou en tuent un autre.<br>
+            Le joueur paralysé ne peut pas agir durant la nuit.<br>
+            Le joueur muté n'agit plus avec son rôle et rejoint les mutants.<br><br>
+            
+            S'il s'agit de la première nuit, les joueurs paralysés ou mutés ouvriront tout de même les yeux à l'appel de leurs rôles.<br>
+            Ceci pour être enregistrés par le MJ ainsi que pour se reconnaître entre médecins s'ils en sont.<br>
+            Ils refermeront ensuite leurs yeux sans agir.<br> Le MJ feindra leurs actions pour ne pas révéler leurs rôles.<br><br>
+            
+            Les mutants doivent agir dans l'intérêt de leur camp,<br> sans compter sur l'espoir d'être soignés pour changer de camp.<br>
+            Ils gagnent lorsque les 2 médecins sont morts où mutés.
+
+        </p>
+    </header>
+
+    <div class="button-container">
+        <!-- Les boutons des joueurs seront générés par JavaScript -->
+    </div>
+
+    <div class="action-buttons">
+        <button id="randomMutantButton" class="random-button">Sélectionner au hasard</button>
+        <button id="mutantParalyseButton" class="start-button">Le mutant va <span class="para-word">Paraliser</span></button>
+    </div>
+
+    <script src="at_mut.js"></script>
+</body>
+</html>

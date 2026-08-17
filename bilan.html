@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilan</title>
+    <link rel="stylesheet" href="bilan.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="turn-counter">Jour : <span id="turnDisplay"></span></div>
+            <h1>Bilan de la nuit</span></h1>
+            <button id="exitButton" class="exit-button">
+                <img src="exit.png" alt="Exit" />
+            </button>
+        </div>
+        <div id="mortStatusMessage"></div> <!-- Zone pour le message conditionnel -->
+
+        <div id="chefStatusMessage"></div> <!-- Zone pour le message conditionnel -->
+        <div class="button-container">
+            <!-- Les boutons des joueurs seront générés par JavaScript -->
+        </div>
+
+    </header>
+    
+    <div class="action-buttons">
+        <button id="nextButton" class="start-button">Passer au vote</button>
+    </div>
+
+    <script src="bilan.js"></script>
+</body>
+</html>
