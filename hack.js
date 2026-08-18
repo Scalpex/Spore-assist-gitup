@@ -136,7 +136,7 @@ function updatresultMessage() {
            ou bien: hôte, réistante ou neutre pour le Genetic.<br><br>`;
         } else {
             const inspectionResult = psykedResult === 'mut' ? 'mutant' : (psykedResult === 'mort' ? 'mort' : 'sain');
-            resultMessage.innerHTML = `(le Psy a inspecté ${psykedName}. Résultat : ${inspectionResult}.)`;
+            resultMessage.innerHTML = `(le Psy a inspecté : ${psykedName}. <br>Résultat : ${inspectionResult}.)`;
         }
     } else if (actionSelected === 'gene') {
         if (gene.status === 'mort' || gene.status === 'mut' || gene.status === 'para') {
@@ -148,7 +148,7 @@ function updatresultMessage() {
            ou bien: hôte, réistante ou neutre pour le Genetic.<br><br>`;
         } else {
             const genomeResult = genedResult === 'hôte' ? 'hôte' : (genedResult === 'résist' ? 'résistant' : 'neutre');
-            resultMessage.innerHTML = `(le Génétic. a inspecté ${genedName}. Résultat : ${genomeResult}.)`;
+            resultMessage.innerHTML = `(le Génét. a inspecté : ${genedName}. <br>Résultat : ${genomeResult}.)`;
         }
     }}
 

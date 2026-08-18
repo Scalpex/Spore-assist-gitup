@@ -38,37 +38,37 @@ function updatestatusMessage() {
         } else if (selectedPlayer) {
                 statusMessageDiv.innerHTML = `(Ce joueur a été : `;
             if (selectedPlayer.trace.includes("P" + (turn-1))){
-                statusMessageDiv.innerHTML += '<span class="yes-effect">paralysé</span>, '}
-            else {statusMessageDiv.innerHTML += '<span class="no-effect">paralysé</span>, '; 
+                statusMessageDiv.innerHTML += '<span class="yes-effect"><br>paralysé</span>, '}
+            else {statusMessageDiv.innerHTML += '<span class="no-effect"><br>paralysé</span>, '; 
             }
             if (selectedPlayer.trace.includes("M" + (turn-1))){
-                statusMessageDiv.innerHTML += '<span class="yes-effect">muté</span>, '}
-            else {statusMessageDiv.innerHTML += '<span class="no-effect">muté</span>, '; 
+                statusMessageDiv.innerHTML += '<span class="yes-effect"><br>muté</span>, '}
+            else {statusMessageDiv.innerHTML += '<span class="no-effect"><br>muté</span>, '; 
             }
             if (selectedPlayer.trace.includes("S" + (turn-1))){
-                statusMessageDiv.innerHTML += '<span class="yes-effect">soigné</span>, '}
-            else {statusMessageDiv.innerHTML += '<span class="no-effect">soigné</span>, '; 
+                statusMessageDiv.innerHTML += '<span class="yes-effect"><br>soigné</span>, '}
+            else {statusMessageDiv.innerHTML += '<span class="no-effect"><br>soigné</span>, '; 
             }
 
             if (selectedPlayer.trace.includes("H" + (turn-1))){
-                statusMessageDiv.innerHTML += '<span class="yes-effect">hacké</span>, '}
-            else {statusMessageDiv.innerHTML += '<span class="no-effect">hacké</span>, '; 
+                statusMessageDiv.innerHTML += '<span class="yes-effect"><br>hacké</span>, '}
+            else {statusMessageDiv.innerHTML += '<span class="no-effect"><br>hacké</span>, '; 
             }
 
             statusMessageDiv.innerHTML += '<br>analysé par: '
 
             if (selectedPlayer.trace.includes("Y" + (turn-1))){
-                statusMessageDiv.innerHTML += '<span class="yes-effect">le psy</span>, '}
-            else {statusMessageDiv.innerHTML += '<span class="no-effect">le psy</span>, '; 
+                statusMessageDiv.innerHTML += '<span class="yes-effect"><br>le psy</span>, '}
+            else {statusMessageDiv.innerHTML += '<span class="no-effect"><br>le psy</span>, '; 
             }
             if (selectedPlayer.trace.includes("G" + (turn-1))){
-                statusMessageDiv.innerHTML += '<span class="yes-effect">le généticien</span>, '}
-            else {statusMessageDiv.innerHTML += '<span class="no-effect">le généticien</span>, '; 
+                statusMessageDiv.innerHTML += '<span class="yes-effect"><br>le généticien</span>, '}
+            else {statusMessageDiv.innerHTML += '<span class="no-effect"><br>le généticien</span>, '; 
             }
 
             if (selectedPlayer.trace.includes("E" + (turn-1))){
-                statusMessageDiv.innerHTML += '<span class="yes-effect">l\'espion</span>.)'}
-            else {statusMessageDiv.innerHTML += '<span class="no-effect">l\'espion</span>.) '; 
+                statusMessageDiv.innerHTML += '<span class="yes-effect"><br>l\'espion</span>.)'}
+            else {statusMessageDiv.innerHTML += '<span class="no-effect"><br>l\'espion</span>.) '; 
             }
 
             }
