@@ -140,7 +140,7 @@ function updatresultMessage() {
         }
     } else if (actionSelected === 'gene') {
         if (gene.status === 'mort' || gene.status === 'mut' || gene.status === 'para') {
-            resultMessage.innerHTML = `(Le Génétic. est innactif cette nuit.)`;
+            resultMessage.innerHTML = `(Le Génét. est innactif cette nuit.)`;
             concluMessage.innerHTML = `<I>(Pour le Maitre du jeu)</I><br>\
             Et je lui dévoile le Nombre de mutant si hack=>info <br>\
            ou bien la cible si hack=>psy/génét<br>\

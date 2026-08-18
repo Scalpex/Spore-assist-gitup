@@ -34,7 +34,7 @@ body, html {
     text-align: center;
     font-size: 1.2em;
     margin-top: 20px;
-    color:#818181;
+    color:#fff;
     font-size: 22px;
     margin-bottom: 35px;
 }
@@ -95,7 +95,7 @@ h1 {
 
 /* Description sous le header */
 .header-description {
-    color: #fff;
+    color: #818181;
     font-size: 16px;
     text-align: center;
     padding: 0 15px;
