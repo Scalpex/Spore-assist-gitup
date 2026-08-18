@@ -1,0 +1,13 @@
+{
+    "name": "Assistant Sporz",
+    "short_name": "Sporz",
+    "start_url": "./",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "iconsvirus.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
